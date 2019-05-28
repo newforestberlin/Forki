@@ -1,0 +1,33 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-12">
+      <h1>Find the Path</h1>
+    </div>
+
+    <div class="col-8">
+      <div id="map"></div>
+    </div>
+
+    <div class="col-4 pl-5">
+      <div class="row">
+        <div class="col-8">
+          <h4>Obstacle height:</h4>
+        </div>
+        <div class="col-4">
+          <input [(ngModel)]="obstacleHeight" class="form-control" type="number">
+        </div>
+        <div class="col-8 mt-2">
+          <h4>Obstacle width:</h4>
+        </div>
+        <div class="col-4"><input [(ngModel)]="obstacleWidth" class="form-control mt-2" type="number"></div>
+        <div class="col-12 mt-2">
+          <button class="btn btn-dark" (click)="createObstacle()">Create Obstacle</button>
+        </div>
+        <div class="col-12 mt-2">
+          <button class="btn btn-success" (click)="checkUnwalkable()">Find Path</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

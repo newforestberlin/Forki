@@ -1,0 +1,18 @@
+#map {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.grid {
+  border: solid rgb(230, 230, 230) 1px;
+  width: 10px;
+  height: 10px
+}
+
+input {
+  margin-left: -45px;
+}
