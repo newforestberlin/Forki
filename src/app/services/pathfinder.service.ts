@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Grid, AStarFinder } from 'pathfinding';
+import { Grid, BiAStarFinder, BiBestFirstFinder } from 'pathfinding';
 import * as $ from 'jquery';
 import { async } from '@angular/core/testing';
 
@@ -16,23 +16,19 @@ export class PathfinderService {
   }
 
   async findPath() {
-    const finder = new AStarFinder();
+    const finder = new BiBestFirstFinder({
+      allowDiagonal: true,
+      dontCrossCorners: true
+    });
     this.grid = new Grid(this.width, this.height);
     const startPosition: any = await this.getStartPosition();
     const startCoordinates = { x: (startPosition % this.width), y: Math.trunc(startPosition / this.width) };
-    console.log(startCoordinates);
-
     const destinationPosition: any = await this.getDestinationPosition();
     const destinationCoordinates = { x: (destinationPosition % this.width), y: Math.trunc(destinationPosition / this.width) };
-    console.log(destinationCoordinates);
-
     const unwalkable = await this.checkUnwalkable();
-    console.log(unwalkable);
-
     await this.setUnwalkable(unwalkable);
     const path = finder.findPath(startCoordinates.x, startCoordinates.y, destinationCoordinates.x, destinationCoordinates.y, this.grid);
     this.visualizePath(path);
-    console.log(path);
   }
 
   async getStartPosition() {
@@ -75,7 +71,7 @@ export class PathfinderService {
     // using the point of the left top corner
     // const grid = x - 1 + y * width
     return new Promise(async (resolve) => {
-      const coordinates = [
+      const coordinates: any[] = [
         { x: (grid % this.width), y: Math.trunc(grid / this.width) }, // left top
         { x: (grid % this.width + 1), y: Math.trunc(grid / this.width) }, // right top
         { x: (grid % this.width), y: Math.trunc(grid / this.width + 1) }, // left bottom
@@ -85,11 +81,15 @@ export class PathfinderService {
   }
 
   visualizePath(path) {
+    let pathString = "M";
     for (let i = 0; i < path.length; i++) {
-      const gridNumber = path[i][0] - 1 + path[i][1] * this.width
-      const grid = document.getElementsByClassName("grid");
-      grid[gridNumber + 1].style.background = "red";
+      if (i === 1) {
+        pathString += "S" + path[i][0] * 10 + " " + path[i][1] * 10 + ","
+      } else {
+        pathString += path[i][0] * 10 + " " + path[i][1] * 10 + ","
+      }
     }
+    $("#path").attr("d", pathString.slice(0, -1));
   }
 
   compareOverlayArray(objArray1, objArray2) {
