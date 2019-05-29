@@ -10,24 +10,28 @@ import { PathfinderService } from '../services/pathfinder.service';
   encapsulation: ViewEncapsulation.None
 })
 export class PathfinderComponent implements OnInit {
-
-  width = 50;
-  height = 50;
+  mapWidth = 700;
+  mapHeight = 500;
   path;
   obstacleHeight = 50;
   obstacleWidth = 70;
+  clearance = 10;
   constructor(private domManipulator: DomManipulatorService, private pathfinderService: PathfinderService) { }
 
   ngOnInit() {
-    this.domManipulator.createMap(this.width, this.height);
-    this.domManipulator.createEndPoint();
+    this.domManipulator.createTargetPoint();
     this.domManipulator.createStartPoint();
   }
 
   createObstacle() {
-    this.domManipulator.createObstacle(this.obstacleWidth, this.obstacleHeight);
+    this.domManipulator.createObstacle(this.obstacleWidth, this.obstacleHeight)
   }
-  checkUnwalkable() {
+
+  findPath(){
     this.pathfinderService.findPath();
+  }
+
+  setMapSize() {
+    this.pathfinderService.setMapSize(this.mapWidth, this.mapHeight);
   }
 }

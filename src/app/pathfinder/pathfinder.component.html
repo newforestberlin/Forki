@@ -6,8 +6,9 @@
 
     <div class="col-8">
       <div id="map">
+        <div class="test"></div>
         <svg class="path">
-          <path id="path" d="" stroke="#28A745" stroke-width="5" fill="none" />
+          <path id="path" d="" stroke="#f31cb3" stroke-width="2" fill="none" />
         </svg>
       </div>
     </div>
@@ -15,9 +16,22 @@
     <div class="col-4 pl-5">
       <div class="row">
         <div class="col-8">
-          <h4>Obstacle height:</h4>
+          <h4>Map height:</h4>
         </div>
         <div class="col-4">
+          <input [(ngModel)]="mapHeight" class="form-control" type="number">
+        </div>
+        <div class="col-8 mt-2">
+          <h4>Map width:</h4>
+        </div>
+        <div class="col-4"><input [(ngModel)]="mapWidth" class="form-control mt-2" type="number"></div>
+        <div class="col-12 mt-2">
+          <button class="btn btn-dark" (click)="setMapSize()">Set Map Size</button>
+        </div>
+        <div class="col-8 mt-2">
+          <h4>Obstacle height:</h4>
+        </div>
+        <div class="col-4 mt-2">
           <input [(ngModel)]="obstacleHeight" class="form-control" type="number">
         </div>
         <div class="col-8 mt-2">
@@ -28,7 +42,7 @@
           <button class="btn btn-dark" (click)="createObstacle()">Create Obstacle</button>
         </div>
         <div class="col-12 mt-2">
-          <button class="btn btn-success" (click)="checkUnwalkable()">Find Path</button>
+          <button class="btn btn-success" (click)="findPath()">Find Path</button>
         </div>
       </div>
     </div>

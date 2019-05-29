@@ -1,10 +1,16 @@
+:root{
+  --mapWidth: 700px;
+  --mapHeight: 500px;
+}
+
 #map {
-  width: 500px;
-  height: 500px;
+  width: var(--mapWidth);
+  height: var(--mapHeight);
   position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  outline: solid rgb(0, 0, 0) 1px;
 }
 
 .grid {
@@ -21,4 +27,22 @@ input {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#end {
+  background: white;
+  background-image: url("../../assets/images/flag.svg");
+  background-position: cover;
+  background-size: 100% 100%; 
+  height: 40px;
+  width: 40px;
+  position: absolute;
+}
+#start {
+  background-image: url("../../assets/images/robo.jpg");
+  background-position: cover;
+  background-size: 100% 100%; 
+  height: 50px;
+  width: 50px;
+  position: absolute;
 }

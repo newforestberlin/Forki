@@ -6,16 +6,16 @@ import * as $ from 'jquery';
   providedIn: 'root'
 })
 export class DomManipulatorService {
-
+  obstacleNumber = 0;
   constructor() { }
 
-  createMap(width, height) {
-    const map = document.getElementById("map");
-    for (let i = 0; i < width * height; i++) {
+  createMap() {
+    /* const map = document.getElementById("map");
+     for (let i = 0; i < width * height; i++) {
       let grid = document.createElement("div");
       grid.className = "grid";
       map.appendChild(grid);
-    }
+    } */
   }
 
   createObstacle(width, height) {
@@ -32,8 +32,10 @@ export class DomManipulatorService {
     div.style.height = height + "px";
     div.style.background = "#3f3f3f";
     div.className = "obstacle";
-    div.ondblclick = doAttack;
-    function doAttack() {
+    div.id = "obstacle";
+    this.obstacleNumber++;
+    div.ondblclick = deleteObstacle;
+    function deleteObstacle() {
       this.remove();
     }
     const map = document.getElementById("map");
@@ -71,16 +73,11 @@ export class DomManipulatorService {
     let offset = [0, 0];
     let div;
     let isDown = false;
-
     div = document.createElement("div");
     div.style.position = "absolute";
     div.style.left = "0px";
     div.style.bottom = "0px";
-    div.style.width = "20px";
-    div.style.height = "20px";
-    div.style.background = "red";
-    div.style.borderRadius = "50%";
-    div.className = "start";
+    div.id = "start";
     const map = document.getElementById("map");
     map.appendChild(div);
 
@@ -110,7 +107,7 @@ export class DomManipulatorService {
       }
     }, true);
   }
-  createEndPoint() {
+  createTargetPoint() {
     let mousePosition;
     let offset = [0, 0];
     let div;
@@ -120,11 +117,7 @@ export class DomManipulatorService {
     div.style.position = "absolute";
     div.style.right = "0px";
     div.style.top = "0px";
-    div.style.width = "20px";
-    div.style.height = "20px";
-    div.style.background = "blue";
-    div.style.borderRadius = "50%";
-    div.className = "end";
+    div.id = "target";
     const map = document.getElementById("map");
     map.appendChild(div);
 
