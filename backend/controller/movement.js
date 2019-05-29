@@ -1,4 +1,4 @@
-// var exampleModel = require('../models/example-model');
+/* // var exampleModel = require('../models/example-model');
 
 var forkState = "down";
 const stepMotorRotation = 90; // deg
@@ -59,4 +59,4 @@ async function wheelController(wheelFL, wheelFR, wheelBL, wheelBR) {
 
 function sleep(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
+} */

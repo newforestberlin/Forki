@@ -5,17 +5,17 @@ var ExampleController = require("../controller/movement");
 var RoutingController = require("../controller/routing");
 
 // routing
-router.get('/findpath:width:height:elementSize:clearance', RoutingController.getPath);
+router.get('/getpath/:width/:height/:elementSize/:clearance', RoutingController.getPath);
 router.get('/robotposition', RoutingController.getRobotPosition);
 router.get('/targetposition', RoutingController.getTargetPosition);
-router.get('/observableposition', RoutingController.getObservablesPosition);
+router.get('/obstacleparameter', RoutingController.getObstacleParameters);
 
 router.post('/targetposition', RoutingController.setTargetPosition);
-router.post('/observableposition', RoutingController.setObservablesPosition);
+router.post('/obstacleparameter', RoutingController.setObstacleParameters);
 
 
 // movement
-router.post('/fork', ExampleController.forkMovementListener);
-router.post('/move', ExampleController.directionListener);
+/* router.post('/fork', ExampleController.forkMovementListener);
+router.post('/move', ExampleController.directionListener); */
 
 module.exports = router;
