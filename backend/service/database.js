@@ -1,30 +1,78 @@
-
 var Robot = require('../models/robot');
 var Target = require('../models/target');
 var Obstacle = require('../models/obstacle');
 
-const robotPosition = function getRobotPositionDatabase() {
+function getRobotPosition(id) {
   return new Promise((resolve) => {
-    Robot.find({}).then(robotPosition => {
-      resolve(robotPosition);
+    Robot.find({
+      id: id
+    }).then(robotPosition => {
+      resolve(robotPosition[0]);
     });
   });
 }
 
-const targetPosition = function getTargetPositionDatabase() {
+function getTargetPosition(id) {
   return new Promise((resolve) => {
-    Target.find({}).then(targetPosition => {
-      resolve(targetPosition);
+    Target.find({
+      id: id
+    }).then(targetPosition => {
+      resolve(targetPosition[0]);
     });
   });
 }
 
-const obstacleParameter = function getObstacleParametersDatabase() {
+function getObstacleParameters(id) {
   return new Promise((resolve) => {
-    Obstacle.find({}).then(obstacleParameter => {
-      resolve(obstacleParameter);
+    Obstacle.find({
+      id: id
+    }).then(obstacleParameter => {
+      resolve(obstacleParameter[0]);
     });
   });
 }
 
-module.exports = {robotPosition,targetPosition,obstacleParameter}
+function targetUpdate(req) {
+  return Target.update({
+    id: req.body.id
+  }, {
+    id: req.body.id,
+    x: req.body.x,
+    y: req.body.y
+  }, {
+    upsert: true
+  });
+}
+
+function robotUpdate(req) {
+  return Robot.update({
+    id: req.body.id
+  }, {
+    id: req.body.id,
+    x: req.body.x,
+    y: req.body.y
+  }, {
+    upsert: true
+  });
+}
+
+async function obstacleUpdate(req) {
+  const obstacleParameters = req.body.obstacleParameters;
+  return Obstacle.update({
+    id: req.body.id
+  }, {
+    id: req.body.id,
+    obstacleParameters: obstacleParameters
+  }, {
+    upsert: true
+  })
+}
+
+module.exports = {
+  getRobotPosition,
+  getTargetPosition,
+  getObstacleParameters,
+  robotUpdate,
+  targetUpdate,
+  obstacleUpdate,
+}
