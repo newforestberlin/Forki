@@ -8,11 +8,11 @@ var RoutingController = require("../controller/routing");
 router.get('/getpath/:id/:width/:height/:elementSize/:clearance', RoutingController.getPath);
 router.get('/robotposition/:id', RoutingController.getRobotPosition);
 router.get('/targetposition/:id', RoutingController.getTargetPosition);
-router.get('/obstacleparameter/:id', RoutingController.getObstacleParameters);
+router.get('/obstacleparameters/:id', RoutingController.getObstacleParameters);
 
+router.post('/robotupdate', RoutingController.setRobotPosition);
 router.post('/targetupdate', RoutingController.setTargetPosition);
 router.post('/obstacleupdate', RoutingController.setObstacleParameters);
-router.post('/robotupdate', RoutingController.setRobotPosition);
 
 
 
