@@ -34,4 +34,11 @@ export class PathfinderComponent implements OnInit {
   setMapSize() {
     this.pathfinderService.setMapSize(this.mapWidth, this.mapHeight);
   }
+
+  setTargetPosition(){
+    this.pathfinderService.setTargetPosition();
+  }
+  setObstacleParameters() {
+    this.pathfinderService.setObstacleParameters();
+  }
 }

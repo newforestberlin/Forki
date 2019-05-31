@@ -57,10 +57,8 @@ export class DomManipulatorService {
       event.preventDefault();
       if (isDown) {
         mousePosition = {
-
           x: event.clientX,
           y: event.clientY
-
         };
         div.style.left = (mousePosition.x + offset[0]) + 'px';
         div.style.top = (mousePosition.y + offset[1]) + 'px';
