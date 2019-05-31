@@ -27,7 +27,7 @@ function getObstacleParameters(id) {
     Obstacle.find({
       id: id
     }).then(obstacleParameter => {
-      resolve(obstacleParameter[0]);
+      resolve(obstacleParameter[0].obstacleParameters);
     });
   });
 }

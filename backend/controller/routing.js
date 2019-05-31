@@ -8,12 +8,14 @@ exports.getPath = async (req, res, next) => {
   const width = req.params.width; // placeholder
   const height = req.params.height; // placeholder
   const elementSize = req.params.elementSize; // placeholder
+  const clearance = req.params.clearance; // placeholder
   const robotPosition = await database.getRobotPosition(id);
   const targetPosition = await database.getTargetPosition(id);
   if (targetPosition.x || robotPosition.x) {
     const obstacleParameters = await database.getObstacleParameters(id);
-    const unwalkables = await pathfinder.getUnwalkables(obstacleParameters);
+    const unwalkables = await pathfinder.getUnwalkables(obstacleParameters, elementSize, clearance);
     const grid = await pathfinder.setUnwalkables(unwalkables, width, height, elementSize);
+    console.log(1)
     pathfinder.findPath(robotPosition, targetPosition, grid).then(path => {
       res.json(path);
     });

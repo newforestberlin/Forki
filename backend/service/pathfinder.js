@@ -1,38 +1,36 @@
 const PF = require('pathfinding');
 
-const unwalkables = async function getUnwalkables() {
+async function getUnwalkables(obstacleParameters, elementSize, clearance) {
   return new Promise(async (resolve) => {
     let unwalkables = [];
     for (let i = 0; i < obstacleParameters.length; i++) {
-      unwalkables.push(await getUnwalkable(obstacleParameters[i]));
+      unwalkables.push(await getUnwalkable(obstacleParameters[i], elementSize, clearance));
     }
     unwalkables = [].concat.apply([], unwalkables);
     resolve(unwalkables);
   });
 }
 
-function getUnwalkables(obstacleParameter) {
+function getUnwalkable(obstacleParameter, elementSize, clearance) {
 
   return new Promise(async (resolve) => {
     const unwalkable = [];
+
     if (obstacleParameter) {
-      if (obstacleParameter.size) {
-        const width = obstacleParameter.size.width / elementSize + clearance;
-        const height = obstacleParameter.size.height / elementSize + clearance;
-        const xOffset = obstacleParameter.position.left / elementSize - clearance / 2;
-        const yOffset = obstacleParameter.position.top / elementSize - clearance / 2;
-        for (let x = 0; x < width; x++) {
-          for (let y = 0; y < height; y++) {
-            unwalkable.push({
-              x: Math.round(xOffset + x),
-              y: Math.round(yOffset + y)
-            });
-          }
+      const width = (obstacleParameter.size.width / elementSize) + parseInt(clearance);
+      const height = (obstacleParameter.size.height / elementSize) + parseInt(clearance);
+      const xOffset = (obstacleParameter.position.x / elementSize) - parseInt(clearance) / 2;
+      const yOffset = (obstacleParameter.position.y / elementSize) - parseInt(clearance) / 2;
+
+      for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+          unwalkable.push({
+            x: Math.round(xOffset + x),
+            y: Math.round(yOffset + y)
+          });
         }
-        resolve(unwalkable);
-      } else {
-        resolve(unwalkable)
       }
+      resolve(unwalkable);
     } else {
       resolve(unwalkable)
     }
@@ -52,7 +50,7 @@ function setUnwalkables(unwalkables, width, height, elementSize) {
 }
 
 async function findPath(robotPosition, targetPosition, grid) {
-  finder = new PF.BiAStarFinder({
+  finder = new PF.BiDijkstraFinder({
     allowDiagonal: true,
     dontCrossCorners: true
   });
@@ -63,6 +61,5 @@ async function findPath(robotPosition, targetPosition, grid) {
 module.exports = {
   getUnwalkables,
   setUnwalkables,
-  unwalkables,
   findPath
 }
