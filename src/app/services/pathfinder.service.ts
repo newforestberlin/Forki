@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from "@angular/common/http";
 import { DatabaseService } from './database.service';
+import { SocketService } from './socket.service';
 
 interface Coordinate {
   x: number;
@@ -16,7 +17,7 @@ export class PathfinderService {
   elementSize = 5;
   clearance = 10;
 
-  constructor(private http: HttpClient, private databaseService: DatabaseService
+  constructor(private http: HttpClient, private databaseService: DatabaseService, private socketService: SocketService
   ) { }
 
   setMapSize(width, height) {
@@ -30,8 +31,8 @@ export class PathfinderService {
     await this.setTargetPosition();
     await this.setRobotPosition();
     await this.setObstacleParameters();
-    const path = await this.databaseService.getPath(this.width, this.height, this.elementSize, this.clearance);
-    this.visualizePath(path);
+    const data = { id: 1, width: this.width, height: this.height, elementSize: this.elementSize, clearance: this.clearance }
+    const path = await this.socketService.send("getPath", data);
   }
 
   setTargetPosition() {
@@ -39,9 +40,9 @@ export class PathfinderService {
       const coordinate = $("#target").position();
       const width = $("#target").width();
       const height = $("#target").height();
-      const position = { x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
-      await this.databaseService.setTargetPosition(position);
-      resolve(position);
+      const data = { id: 1, x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
+      await this.socketService.send("targetupdate", data);
+      resolve(data);
     });
   }
 
@@ -50,9 +51,9 @@ export class PathfinderService {
       const coordinate = $("#start").position();
       const width = $("#start").width();
       const height = $("#start").height();
-      const position = { x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
-      await this.databaseService.setRobotPosition(position);
-      resolve(position);
+      const data = { id: 1, x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
+      await this.socketService.send("robotupdate", data);
+      resolve(data);
     });
   }
 
@@ -63,7 +64,8 @@ export class PathfinderService {
       for (let i = 0; i < obstacles.length; i++) {
         obstaclePositions.push(await getObstacleParameter(obstacles[i]));
       }
-      this.databaseService.setObstacleParameters(obstaclePositions);
+      const obstacleParameters = obstaclePositions
+      await this.socketService.send("obstacleupdate", { id: 1, obstacleParameters });
       resolve(obstaclePositions);
 
       function getObstacleParameter(obstacle) {

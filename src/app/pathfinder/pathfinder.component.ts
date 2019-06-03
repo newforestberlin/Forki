@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomManipulatorService } from '../services/dom-manipulator.service';
 import { ViewEncapsulation } from '@angular/core';
 import { PathfinderService } from '../services/pathfinder.service';
-import { ChatService } from '../services/chat.service';
+import { SocketListenerService } from '../services/socket-listener.service';
 
 @Component({
   selector: 'app-pathfinder',
@@ -17,18 +17,12 @@ export class PathfinderComponent implements OnInit {
   obstacleHeight = 50;
   obstacleWidth = 70;
   clearance = 10;
-  constructor(private domManipulator: DomManipulatorService, private pathfinderService: PathfinderService, private chatService: ChatService) { }
+  constructor(private domManipulator: DomManipulatorService, private pathfinderService: PathfinderService, private socketListenerService: SocketListenerService) { }
 
   ngOnInit() {
-    this.chatService.messages.subscribe(msg => {
-      console.log(msg);
-    })
     this.domManipulator.createTargetPoint();
     this.domManipulator.createStartPoint();
-  }
-
-  sendMessage() {
-    this.chatService.sendMsg("Test message");
+    this.socketListenerService.initIoConnection();
   }
 
   createObstacle() {
@@ -43,7 +37,7 @@ export class PathfinderComponent implements OnInit {
     this.pathfinderService.setMapSize(this.mapWidth, this.mapHeight);
   }
 
-  setTargetPosition(){
+  setTargetPosition() {
     this.pathfinderService.setTargetPosition();
   }
   setObstacleParameters() {
