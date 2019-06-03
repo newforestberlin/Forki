@@ -15,7 +15,6 @@ exports.getPath = async (req, res, next) => {
     const obstacleParameters = await database.getObstacleParameters(id);
     const unwalkables = await pathfinder.getUnwalkables(obstacleParameters, elementSize, clearance);
     const grid = await pathfinder.setUnwalkables(unwalkables, width, height, elementSize);
-    console.log(1)
     pathfinder.findPath(robotPosition, targetPosition, grid).then(path => {
       res.json(path);
     });
