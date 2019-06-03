@@ -40,7 +40,7 @@ exports.getObstacleParameters = async (req, res, next) => {
 }
 
 exports.setTargetPosition = (req, res, next) => {
-  database.targetUpdate(req).then(msg => {
+  database.targetUpdate(req.body.id, req.body.x, req.body.y).then(msg => {
     res.send(msg);
   }).catch(err => {
     res.send(err)
@@ -48,7 +48,7 @@ exports.setTargetPosition = (req, res, next) => {
 }
 
 exports.setRobotPosition = (req, res, next) => {
-  database.robotUpdate(req).then(msg => {
+  database.robotUpdate(req.body.id, req.body.x, req.body.y).then(msg => {
     res.send(msg);
   }).catch(err => {
     res.send(err)
@@ -56,7 +56,7 @@ exports.setRobotPosition = (req, res, next) => {
 }
 
 exports.setObstacleParameters = (req, res, next) => {
-  database.obstacleUpdate(req).then(msg => {
+  database.obstacleUpdate(req.body.id, req.obstacleParameters ).then(msg => {
     res.send(msg);
   }).catch(err => {
     res.send(err)
