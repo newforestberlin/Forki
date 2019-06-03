@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from "@angular/common/http";
-import { DatabaseService } from './database.service';
 import { SocketService } from './socket.service';
 
 interface Coordinate {
@@ -17,7 +16,7 @@ export class PathfinderService {
   elementSize = 5;
   clearance = 10;
 
-  constructor(private http: HttpClient, private databaseService: DatabaseService, private socketService: SocketService
+  constructor(private http: HttpClient, private socketService: SocketService
   ) { }
 
   setMapSize(width, height) {
@@ -77,11 +76,11 @@ export class PathfinderService {
     });
   }
 
-  getObstacleParameter() {
+  /* getObstacleParameter() {
     return new Promise(async (resolve) => {
       return await this.databaseService.getObstacleParameters();
     });
-  }
+  } */
 
   async visualizePath(path) {
     let pathString = "M ";
