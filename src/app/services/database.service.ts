@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Grid, BiAStarFinder, BiBDijstraFinder, BiBestFirstFinder } from 'pathfinding';
-import * as $ from 'jquery';
 import { HttpClient } from "@angular/common/http";
 
-interface Coordinate {
-    x: number;
-    y: number
-}
 @Injectable({
     providedIn: 'root'
 })
