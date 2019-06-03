@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Grid, DijkstraFinder } from 'pathfinding';
-import * as $ from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +26,7 @@ export class DomManipulatorService {
     div.style.position = "absolute";
     div.style.left = "0px";
     div.style.top = "0px";
+    div.style.borderRadius = "5px";
     div.style.width = width + "px";
     div.style.height = height + "px";
     div.style.background = "#3f3f3f";
