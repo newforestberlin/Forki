@@ -27,41 +27,44 @@ function getObstacleParameters(id) {
     Obstacle.find({
       id: id
     }).then(obstacleParameter => {
-      resolve(obstacleParameter[0].obstacleParameters);
+      if (obstacleParameter[0]) {
+        resolve(obstacleParameter[0].obstacleParameters);
+      } else {
+        resolve(null);
+      }
     });
   });
 }
 
-function targetUpdate(req) {
+function targetUpdate(id, x, y) {
   return Target.update({
-    id: req.body.id
+    id: id
   }, {
-    id: req.body.id,
-    x: req.body.x,
-    y: req.body.y
+    id: id,
+    x: x,
+    y: y
   }, {
     upsert: true
   });
 }
 
-function robotUpdate(req) {
+function robotUpdate(id, x, y) {
   return Robot.update({
-    id: req.body.id
+    id: id
   }, {
-    id: req.body.id,
-    x: req.body.x,
-    y: req.body.y
+    id: id,
+    x: x,
+    y: y
   }, {
     upsert: true
   });
 }
 
-async function obstacleUpdate(req) {
-  const obstacleParameters = req.body.obstacleParameters;
+async function obstacleUpdate(id, obstacleParameters) {
   return Obstacle.update({
-    id: req.body.id
+    id: id
   }, {
-    id: req.body.id,
+    id: id,
     obstacleParameters: obstacleParameters
   }, {
     upsert: true
