@@ -6,8 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PathfinderComponent } from './pathfinder/pathfinder.component';
-import { ChatService } from './services/chat.service';
-import { WebsocketService } from './services/websocket.service';
+import { SocketService } from './services/socket.service';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { WebsocketService } from './services/websocket.service';
     HttpClientModule
   ],
   providers: [
-    ChatService,
-    WebsocketService
+    SocketService
   ],
   bootstrap: [AppComponent]
 })
