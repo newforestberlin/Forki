@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('passport-local-express4:server');
 var http = require('http');
+const socket = require('socket.io');
+
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +23,22 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+const io = socket.listen(server);
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+
+  socket.on('message', message => {
+    console.log('message received: ' + message);
+    io.emit('message', {
+      types: 'new-message',
+      text: message
+    });
+  });
+});
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -31,7 +49,7 @@ server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
- */ 
+ */
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
@@ -58,9 +76,9 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port
+  var bind = typeof port === 'string' ?
+    'Pipe ' + port :
+    'Port ' + port
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -83,8 +101,8 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  var bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
   debug('Listening on ' + bind);
 }
