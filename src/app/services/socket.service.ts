@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 export class SocketService {
     private subject: Subject<MessageEvent>;
     private socket;
-    routes = ["getPath", "robotposition", "targetposition", "obstacleparameters", "robotupdate", "targetupdate", "obstacleupdate"]
 
     constructor(private http: HttpClient
     ) { }
