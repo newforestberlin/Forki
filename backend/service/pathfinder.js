@@ -41,7 +41,7 @@ function setUnwalkables(unwalkables, width, height, elementSize) {
   let grid = new PF.Grid(width / elementSize, height / elementSize);
   return new Promise((resolve) => {
     for (let i = 0; i < unwalkables.length; i++) {
-      if (unwalkables[i].x >= 0 && unwalkables[i].y >= 0) {
+      if (unwalkables[i].x >= 0 && unwalkables[i].x < (width / elementSize) && unwalkables[i].y < (height / elementSize) && unwalkables[i].y >= 0) {
         grid.setWalkableAt(unwalkables[i].x, unwalkables[i].y, false);
       }
     }
