@@ -66,4 +66,13 @@ exports.sockets = (socket, io) => {
     });
   });
 
+  socket.on('anchorUpdate', async data => {
+    console.log(data);
+    data.map(async anchor => {
+      await RoutingController.setAnchorParameter(anchor);
+    })
+    io.emit('position', {
+      result: 'yeay'
+    });
+  });
 }

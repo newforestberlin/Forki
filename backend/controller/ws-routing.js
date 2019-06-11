@@ -61,6 +61,16 @@ exports.setRobotPosition = (data) => {
   });
 }
 
+exports.setAnchorParameter = (data) => {
+  return new Promise((resolve) => {
+    database.anchorUpdate(data.anchor, data.data).then(msg => {
+      resolve(msg);
+    }).catch(err => {
+      resolve(err);
+    });
+  });
+}
+
 exports.setObstacleParameters = (data) => {
   return new Promise((resolve) => {
     database.obstacleUpdate(data.id, data.obstacleParameters).then(msg => {
