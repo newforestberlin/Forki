@@ -1,6 +1,8 @@
 var Robot = require('../models/robot');
 var Target = require('../models/target');
 var Obstacle = require('../models/obstacle');
+var Anchor = require('../models/anchor');
+
 
 function getRobotPosition(id) {
   return new Promise((resolve) => {
@@ -60,7 +62,24 @@ function robotUpdate(id, x, y) {
   });
 }
 
-async function obstacleUpdate(id, obstacleParameters) {
+function anchorUpdate(anchor, data) {
+  data = JSON.parse(data)
+  return Anchor.update({
+    id: anchor
+  }, {
+    id: anchor,
+    data: {
+      x: data.x,
+      y: data.y,
+      dist: data.dist
+    }
+  }, {
+    upsert: true
+  })
+}
+
+
+function obstacleUpdate(id, obstacleParameters) {
   return Obstacle.update({
     id: id
   }, {
@@ -75,6 +94,7 @@ module.exports = {
   getRobotPosition,
   getTargetPosition,
   getObstacleParameters,
+  anchorUpdate,
   robotUpdate,
   targetUpdate,
   obstacleUpdate,
