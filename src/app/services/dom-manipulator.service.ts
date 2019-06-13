@@ -146,6 +146,10 @@ export class DomManipulatorService {
   }
 
   createAnchorPoints(anchor, left, top, radius) {
+    const k = 500;
+    radius *= k;
+    left *= k;
+    top *= k;
     if (!document.getElementById(anchor)) {
       let div = document.createElement("div");
       div.style.position = "absolute";
@@ -156,7 +160,7 @@ export class DomManipulatorService {
       const map = document.getElementById("map");
       map.appendChild(div);
     } else {
-      let  anchorPosition = document.getElementById(anchor);
+      let anchorPosition = document.getElementById(anchor);
       anchorPosition.style.left = left + "px";
       anchorPosition.style.top = top + "px";
     }
@@ -169,9 +173,9 @@ export class DomManipulatorService {
 
   updateAnchorRadius(anchor, left, top, radius) {
     let circle = document.getElementById(anchor + "Radius")
-    circle.style.left = left - radius * 430 + "px";
-    circle.style.top = top - radius * 430 + "px";
-    circle.style.padding = radius * 430 + "px";
+    circle.style.left = left - radius + "px";
+    circle.style.top = top - radius + "px";
+    circle.style.padding = radius + "px";
   }
 
   createAnchorRadius(anchor, left, top, radius) {
@@ -183,5 +187,28 @@ export class DomManipulatorService {
     circle.className = "circle";
     const map = document.getElementById("map");
     map.appendChild(circle);
+  }
+
+  setTrilaterationPoint(pos) {
+    if (pos.x != NaN && pos.x != null) {
+      console.log(pos.x)
+      const k = 500;
+      pos.x *= k;
+      pos.y *= k;
+      if (!document.getElementById("tri")) {
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.left = pos.x + "px";
+        div.style.top = pos.y + "px";
+        div.className = "tri";
+        div.id = "tri";
+        const map = document.getElementById("map");
+        map.appendChild(div);
+      } else {
+        let tri = document.getElementById("tri");
+        tri.style.left = pos.x + "px";
+        tri.style.top = pos.y + "px";
+      }
+    }
   }
 }
