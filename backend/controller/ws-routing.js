@@ -36,6 +36,11 @@ exports.getTargetPosition = async (data) => {
   return await database.getTargetPosition(id);
 }
 
+exports.getAnchorParameters = async (data) => {
+  const id = data.id;
+  return await database.getAnchorParameters(id);
+}
+
 exports.getObstacleParameters = async (data) => {
   const id = data.id;
   return await database.getObstacleParameters(id);

@@ -33,6 +33,14 @@ exports.sockets = (socket, io) => {
     });
   });
 
+  socket.on('anchorParameters', async data => {
+    console.log('target request received: ' + data);
+    const result = await RoutingController.getAnchorParameters(data);
+    io.emit('anchorParameters', {
+      result: result
+    });
+  });
+
   socket.on('obstacleparameters', async data => {
     console.log('obstacle request received: ' + data);
     const parameter = await RoutingController.getObstacleParameters(data);
@@ -44,9 +52,7 @@ exports.sockets = (socket, io) => {
   socket.on('robotupdate', async data => {
     console.log('update robot: ' + data);
     const result = await RoutingController.setRobotPosition(data);
-    io.emit('robotupdate', {
-      result: result
-    });
+    io.emit('robotupdate', result);
   });
 
   socket.on('targetupdate', async data => {
@@ -67,7 +73,7 @@ exports.sockets = (socket, io) => {
   });
 
   socket.on('anchorUpdate', async data => {
-    console.log(data);
+    //console.log(data);
     data.map(async anchor => {
       await RoutingController.setAnchorParameter(anchor);
     })

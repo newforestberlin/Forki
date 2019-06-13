@@ -24,6 +24,16 @@ function getTargetPosition(id) {
   });
 }
 
+function getAnchorParameters(id) {
+  return new Promise((resolve) => {
+    Anchor.find({
+      id: id
+    }).then(anchorParameter => {
+      resolve(anchorParameter[0]);
+    });
+  });
+}
+
 function getObstacleParameters(id) {
   return new Promise((resolve) => {
     Obstacle.find({
@@ -78,7 +88,6 @@ function anchorUpdate(anchor, data) {
   })
 }
 
-
 function obstacleUpdate(id, obstacleParameters) {
   return Obstacle.update({
     id: id
@@ -93,6 +102,7 @@ function obstacleUpdate(id, obstacleParameters) {
 module.exports = {
   getRobotPosition,
   getTargetPosition,
+  getAnchorParameters,
   getObstacleParameters,
   anchorUpdate,
   robotUpdate,
