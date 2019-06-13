@@ -78,9 +78,9 @@ export class PathfinderService {
 
   async getAnchorParameters() {
     setInterval(async () => {
-      await this.socketService.send("anchorParameters", { id: "AN0" });
-      await this.socketService.send("anchorParameters", { id: "AN1" });
-      await this.socketService.send("anchorParameters", { id: "AN2" });
+      await this.socketService.send("anchorParameters", { id: "5C2F" });
+      await this.socketService.send("anchorParameters", { id: "0F8C" });
+      await this.socketService.send("anchorParameters", { id: "8182" });
     }, 100);
   }
 
