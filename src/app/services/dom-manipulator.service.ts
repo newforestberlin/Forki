@@ -145,21 +145,43 @@ export class DomManipulatorService {
     }, true);
   }
 
-  createAnchorPoints(left, top, radius) {
-    let div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.left = left + "px";
-    div.style.top = top + "px";
-    div.className = "anchor";
+  createAnchorPoints(anchor, left, top, radius) {
+    if (!document.getElementById(anchor)) {
+      let div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.left = left + "px";
+      div.style.top = top + "px";
+      div.className = "anchor";
+      div.id = anchor;
+      const map = document.getElementById("map");
+      map.appendChild(div);
+    } else {
+      let  anchorPosition = document.getElementById(anchor);
+      anchorPosition.style.left = left + "px";
+      anchorPosition.style.top = top + "px";
+    }
+    if (!document.getElementById(anchor + "Radius")) {
+      this.createAnchorRadius(anchor, left, top, radius);
+    } else {
+      this.updateAnchorRadius(anchor, left, top, radius);
+    }
+  }
 
+  updateAnchorRadius(anchor, left, top, radius) {
+    let circle = document.getElementById(anchor + "Radius")
+    circle.style.left = left - radius * 430 + "px";
+    circle.style.top = top - radius * 430 + "px";
+    circle.style.padding = radius * 430 + "px";
+  }
+
+  createAnchorRadius(anchor, left, top, radius) {
     let circle = document.createElement("div");
     circle.style.left = left - radius * 430 + "px";
     circle.style.top = top - radius * 430 + "px";
     circle.style.padding = radius * 430 + "px";
+    circle.id = anchor + "Radius";
     circle.className = "circle";
-
     const map = document.getElementById("map");
-    map.appendChild(div);
     map.appendChild(circle);
   }
 }

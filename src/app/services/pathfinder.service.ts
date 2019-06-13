@@ -81,7 +81,7 @@ export class PathfinderService {
       await this.socketService.send("anchorParameters", { id: "AN0" });
       await this.socketService.send("anchorParameters", { id: "AN1" });
       await this.socketService.send("anchorParameters", { id: "AN2" });
-    }, 1000)
+    }, 100)
   }
 
   async visualizePath(path) {

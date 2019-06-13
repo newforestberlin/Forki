@@ -9,6 +9,7 @@ import { DomManipulatorService } from './dom-manipulator.service';
   providedIn: 'root'
 })
 export class SocketListenerService {
+  counter = 0;
   constructor(private http: HttpClient, private socketService: SocketService, private pathfinderService: PathfinderService, private domManipulator: DomManipulatorService
   ) { }
 
@@ -20,8 +21,8 @@ export class SocketListenerService {
       });
     this.socketService.onMessage("anchorParameters")
       .subscribe((anchorParameters: any) => {
-        console.log(anchorParameters.result)
-        this.domManipulator.createAnchorPoints(anchorParameters.result.data.x, anchorParameters.result.data.y, anchorParameters.result.data.dist);
+        console.log(anchorParameters.result);
+        this.domManipulator.createAnchorPoints(anchorParameters.result.id, anchorParameters.result.data.x, anchorParameters.result.data.y, anchorParameters.result.data.dist);
       });
   }
 }
