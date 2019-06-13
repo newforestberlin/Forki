@@ -3,7 +3,6 @@ var database = require("../service/database");
 var pathfinder = require("../service/pathfinder");
 
 exports.getPath = async (data) => {
-
   return new Promise(async (resolve) => {
     const id = data.id;
     const width = data.width; // placeholder
@@ -24,6 +23,16 @@ exports.getPath = async (data) => {
     }
   });
 }
+
+exports.getRobotPositionRealtime = async () => {
+  return new Promise(async (resolve) => {
+    const AN0 = await database.getAnchorParameters("AN0");
+    const AN1 = await database.getAnchorParameters("AN1");
+    const AN2 = await database.getAnchorParameters("AN2");
+    resolve(await getRobotPositionRealtime(AN0,AN1,AN2));
+  });
+}
+
 
 exports.getRobotPosition = async (data) => {
   const id = data.id;

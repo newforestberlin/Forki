@@ -59,9 +59,13 @@ exports.sockets = (socket, io) => {
   socket.on('anchorUpdate', async data => {
     data.map(async anchor => {
       await RoutingController.setAnchorParameter(anchor);
-    })
-    io.emit('position', {
-      result: 'yeay'
     });
+  });
+
+  socket.on('realtimeRobot', async data => {
+      const position = await RoutingController.getRobotPositionRealtime(position);
+      io.emit('obstacleupdate', {
+        position: position
+      });
   });
 }
