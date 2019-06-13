@@ -1,6 +1,7 @@
 var PF = require('pathfinding');
 var database = require("../service/database");
 var pathfinder = require("../service/pathfinder");
+var trilateration = require("../service/trilateration");
 
 exports.getPath = async (data) => {
   return new Promise(async (resolve) => {
@@ -29,7 +30,7 @@ exports.getRobotPositionRealtime = async () => {
     const AN0 = await database.getAnchorParameters("AN0");
     const AN1 = await database.getAnchorParameters("AN1");
     const AN2 = await database.getAnchorParameters("AN2");
-    resolve(await getRobotPositionRealtime(AN0,AN1,AN2));
+    resolve(await trilateration.getRobotPositionRealtime(AN0,AN1,AN2));
   });
 }
 

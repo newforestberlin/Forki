@@ -20,7 +20,7 @@ async function getRobotPositionRealtime(AN0, AN1, AN2) {
     ];
     var pos = trilateration.calculate(beacons);
     console.log("X: " + pos.x + "; Y: " + pos.y);
-    resolve(unwalkables);
+    resolve(pos);
   });
 }
 

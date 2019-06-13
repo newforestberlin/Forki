@@ -63,9 +63,9 @@ exports.sockets = (socket, io) => {
   });
 
   socket.on('realtimeRobot', async data => {
-      const position = await RoutingController.getRobotPositionRealtime(position);
-      io.emit('obstacleupdate', {
-        position: position
+      const position = await RoutingController.getRobotPositionRealtime();
+      io.emit('realtimeRobot', {
+        position
       });
   });
 }
