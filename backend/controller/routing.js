@@ -25,7 +25,6 @@ exports.getPath = async (data) => {
   });
 }
 
-
 exports.getRobotPosition = async (data) => {
   const id = data.id;
   return await database.getRobotPosition(id);
@@ -34,6 +33,11 @@ exports.getRobotPosition = async (data) => {
 exports.getTargetPosition = async (data) => {
   const id = data.id;
   return await database.getTargetPosition(id);
+}
+
+exports.getAnchorParameters = async (data) => {
+  const id = data.id;
+  return await database.getAnchorParameters(id);
 }
 
 exports.getObstacleParameters = async (data) => {
@@ -54,6 +58,16 @@ exports.setTargetPosition = (data) => {
 exports.setRobotPosition = (data) => {
   return new Promise((resolve) => {
     database.robotUpdate(data.id, data.x, data.y).then(msg => {
+      resolve(msg);
+    }).catch(err => {
+      resolve(err);
+    });
+  });
+}
+
+exports.setAnchorParameter = (data) => {
+  return new Promise((resolve) => {
+    database.anchorUpdate(data.anchor, data.data).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);

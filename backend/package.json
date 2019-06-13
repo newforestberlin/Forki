@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "ws": "nodemon ./websocket.js",
+    "start": "nodemon app.js",
     "test": "make test"
   },
   "repository": {
