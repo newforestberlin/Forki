@@ -1,23 +1,60 @@
-var express = require("express");
-var router = express.Router();
+const RoutingController = require("../controller/routing");
 
-var ExampleController = require("../controller/movement");
-var RoutingController = require("../controller/routing");
+exports.sockets = (socket, io) => {
+  socket.on('getPath', async data => {
+    console.log('path request received: ' + data);
+    const path = await RoutingController.getPath(data);
+    io.emit('getPath',
+      path);
+  });
 
-// routing
-router.get('/getpath/:id/:width/:height/:elementSize/:clearance', RoutingController.getPath);
-router.get('/robotposition/:id', RoutingController.getRobotPosition);
-router.get('/targetposition/:id', RoutingController.getTargetPosition);
-router.get('/obstacleparameters/:id', RoutingController.getObstacleParameters);
+  socket.on('robotposition', async data => {
+    console.log('robot request received: ' + data);
+    const position = await RoutingController.getRobotPosition(data);
+    io.emit('robotposition', {
+      position: position
+    });
+  });
 
-router.post('/robotupdate', RoutingController.setRobotPosition);
-router.post('/targetupdate', RoutingController.setTargetPosition);
-router.post('/obstacleupdate', RoutingController.setObstacleParameters);
+  socket.on('targetposition', async data => {
+    console.log('target request received: ' + data);
+    const position = await RoutingController.getTargetPosition(data);
+    io.emit('targetposition', {
+      position: position
+    });
+  });
 
+  socket.on('obstacleparameters', async data => {
+    console.log('obstacle request received: ' + data);
+    const parameter = await RoutingController.getObstacleParameters(data);
+    io.emit('obstacleparameters', {
+      parameter: parameter
+    });
+  });
 
+  socket.on('robotupdate', async data => {
+    console.log('update robot: ' + data);
+    const result = await RoutingController.setRobotPosition(data);
+    io.emit('robotupdate', {
+      result: result
+    });
+  });
 
-// movement
-/* router.post('/fork', ExampleController.forkMovementListener);
-router.post('/move', ExampleController.directionListener); */
+  socket.on('targetupdate', async data => {
+    console.log('update target: ' + data);
+    const result = await RoutingController.setTargetPosition(data);
+    io.emit('targetupdate', {
+      result: result
+    });
+  });
 
-module.exports = router;
+  socket.on('obstacleupdate', async data => {
+    console.log('update obstacle: ' + JSON.stringify(data));
+    const result = await RoutingController.setObstacleParameters(data);
+    console.log(result);
+    io.emit('obstacleupdate', {
+      result: result
+    });
+  });
+
+}
