@@ -11,8 +11,8 @@ import { SocketListenerService } from '../services/socket-listener.service';
   encapsulation: ViewEncapsulation.None
 })
 export class PathfinderComponent implements OnInit {
-  mapWidth = 700;
-  mapHeight = 500;
+  mapWidth = 525;
+  mapHeight = 525;
   path;
   obstacleHeight = 50;
   obstacleWidth = 70;
@@ -23,6 +23,7 @@ export class PathfinderComponent implements OnInit {
     this.domManipulator.createTargetPoint();
     this.domManipulator.createStartPoint();
     this.socketListenerService.initIoConnection();
+    this.pathfinderService.getAnchorParameters();
   }
 
   createObstacle() {

@@ -72,8 +72,8 @@ export class DomManipulatorService {
     let isDown = false;
     div = document.createElement("div");
     div.style.position = "absolute";
-    div.style.left = "0px";
-    div.style.bottom = "0px";
+    div.style.left = "10px";
+    div.style.bottom = "10px";
     div.id = "start";
     const map = document.getElementById("map");
     map.appendChild(div);
@@ -112,8 +112,8 @@ export class DomManipulatorService {
 
     div = document.createElement("div");
     div.style.position = "absolute";
-    div.style.right = "0px";
-    div.style.top = "0px";
+    div.style.right = "10px";
+    div.style.top = "10px";
     div.id = "target";
     const map = document.getElementById("map");
     map.appendChild(div);
@@ -143,5 +143,23 @@ export class DomManipulatorService {
         div.style.top = (mousePosition.y + offset[1]) + 'px';
       }
     }, true);
+  }
+
+  createAnchorPoints(left, top, radius) {
+    let div = document.createElement("div");
+    div.style.position = "absolute";
+    div.style.left = left + "px";
+    div.style.top = top + "px";
+    div.className = "anchor";
+
+    let circle = document.createElement("div");
+    circle.style.left = left - radius * 430 + "px";
+    circle.style.top = top - radius * 430 + "px";
+    circle.style.padding = radius * 430 + "px";
+    circle.className = "circle";
+
+    const map = document.getElementById("map");
+    map.appendChild(div);
+    map.appendChild(circle);
   }
 }
