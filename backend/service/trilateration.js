@@ -37,7 +37,6 @@ async function getRobotPositionRealtime(AN0, AN1, AN2) {
         });
         mean.x /= movingPositionsUpdated.data.length;
         mean.y /= movingPositionsUpdated.data.length;
-        console.log(mean)
       } catch {
         console.log("Error");
       }

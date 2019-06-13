@@ -27,10 +27,12 @@ exports.getPath = async (data) => {
 
 exports.getRobotPositionRealtime = async () => {
   return new Promise(async (resolve) => {
-    const AN0 = await database.getAnchorParameters("AN0");
-    const AN1 = await database.getAnchorParameters("AN1");
-    const AN2 = await database.getAnchorParameters("AN2");
-    resolve(await trilateration.getRobotPositionRealtime(AN0,AN1,AN2));
+    const AN0 = await database.getAnchorParameters("5C2F");
+    const AN1 = await database.getAnchorParameters("0F8C");
+    const AN2 = await database.getAnchorParameters("8182");
+    if (AN0 && AN1 && AN2) {
+      resolve(await trilateration.getRobotPositionRealtime(AN0, AN1, AN2));
+    } else resolve();
   });
 }
 
@@ -76,8 +78,9 @@ exports.setRobotPosition = (data) => {
 }
 
 exports.setAnchorParameter = (data) => {
+  const dataObject = JSON.parse(data.data);
   return new Promise((resolve) => {
-    database.anchorUpdate(data.anchor, data.data).then(msg => {
+    database.anchorUpdate(dataObject.id, dataObject).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);

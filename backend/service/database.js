@@ -73,12 +73,11 @@ function robotUpdate(id, x, y) {
   });
 }
 
-function anchorUpdate(anchor, data) {
-  data = JSON.parse(data)
+function anchorUpdate(id, data) {
   return Anchor.update({
-    id: anchor
+    id: id
   }, {
-    id: anchor,
+    id: id,
     data: {
       x: data.x,
       y: data.y,
