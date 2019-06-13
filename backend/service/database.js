@@ -2,6 +2,7 @@ var Robot = require('../models/robot');
 var Target = require('../models/target');
 var Obstacle = require('../models/obstacle');
 var Anchor = require('../models/anchor');
+var Moving = require('../models/moving');
 
 
 function getRobotPosition(id) {
@@ -99,6 +100,53 @@ function obstacleUpdate(id, obstacleParameters) {
   })
 }
 
+async function setMovingAverage(id, x, y) {
+  return new Promise(async (resolve) => {
+    let moving = await getMovingAverage(id);
+    if (!moving) {
+      moving = {
+        id: id,
+        data: []
+      };
+    }
+    moving.data.unshift({
+      x: x,
+      y: y
+    })
+    console.log(moving);
+    await dropData(moving);
+    Moving.update({
+      id: id
+    }, moving, {
+      upsert: true
+    }).then(movingUpdated => {
+      resolve(movingUpdated);
+    });
+  });
+
+  function dropData(moving) {
+    return new Promise((resolve) => {
+      if (moving.data.length >= 20) {
+        while (moving.data.length > 20) {
+          moving.data.pop();
+        }
+      }
+      resolve();
+    });
+  };
+}
+
+
+function getMovingAverage(id) {
+  return new Promise((resolve) => {
+    Moving.find({
+      id: id
+    }).then(moving => {
+      resolve(moving[0]);
+    });
+  })
+}
+
 module.exports = {
   getRobotPosition,
   getTargetPosition,
@@ -108,4 +156,6 @@ module.exports = {
   robotUpdate,
   targetUpdate,
   obstacleUpdate,
+  setMovingAverage,
+  getMovingAverage
 }

@@ -65,7 +65,7 @@ input {
   height: 25px;
   width: 25px;
   position: absolute;
-  border: solid 2px rgb(255, 0, 0);
+  border: solid 2px rgba(255, 0, 0, 0.425);
   border-radius: 50%;
   background: rgba(255, 0, 0, 0.205);
   z-index: -1;
@@ -73,11 +73,13 @@ input {
 }
 
 .tri {
-  height: 25px;
-  width: 25px;
+  height: 10px;
+  width:10px;
   position: absolute;
   border: solid 2px rgb(0, 132, 255);
   border-radius: 50%;
   background: rgba(0, 162, 255, 0.205);
   transition: all ease-in-out 0.2s;
 }
+
+
