@@ -12,7 +12,7 @@ interface Coordinate {
 })
 export class PathfinderService {
   width = 525;
-  height = 525;
+  height = 725;
   elementSize = 5;
   clearance = 10;
 
@@ -47,9 +47,9 @@ export class PathfinderService {
 
   setRobotPosition() {
     return new Promise(async (resolve) => {
-      const coordinate = $("#start").position();
-      const width = $("#start").width();
-      const height = $("#start").height();
+      const coordinate = $(".robot").position();
+      const width = $(".robot").width();
+      const height = $(".robot").height();
       const data = { id: 1, x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
       await this.socketService.send("robotupdate", data);
       resolve(data);
@@ -77,11 +77,17 @@ export class PathfinderService {
   }
 
   async getAnchorParameters() {
-    setInterval(async () => {
-      await this.socketService.send("anchorParameters", { id: "5C2F" });
-      await this.socketService.send("anchorParameters", { id: "0F8C" });
-      await this.socketService.send("anchorParameters", { id: "8182" });
-    }, 100);
+    // setInterval(async () => {
+    //   await this.socketService.send("anchorParameters", { id: "5C2F" });
+    //   await this.socketService.send("anchorParameters", { id: "0F8C" });
+    //   await this.socketService.send("anchorParameters", { id: "8182" });
+    // }, 100);
+  }
+
+  async setAnchorPosition(x0: number, x1: number, x2: number, y0: number, y1: number, y2: number) {
+    await this.socketService.send("anchorPositionUpdate", { id: "5C2F", x: x0, y: y0 });
+    await this.socketService.send("anchorPositionUpdate", { id: "0F8C", x: x1, y: y1 });
+    this.socketService.send("anchorPositionUpdate", { id: "8182", x: x2, y: y2 });
   }
 
   async visualizePath(path) {

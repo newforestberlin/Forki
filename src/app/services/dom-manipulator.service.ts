@@ -5,24 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class DomManipulatorService {
   obstacleNumber = 0;
-  constructor() { }
+  sizeFactor = 384;
 
-  createMap() {
-    /* const map = document.getElementById("map");
-     for (let i = 0; i < width * height; i++) {
-      let grid = document.createElement("div");
-      grid.className = "grid";
-      map.appendChild(grid);
-    } */
-  }
+  constructor() { }
 
   createObstacle(width, height) {
     let mousePosition;
     let offset = [0, 0];
-    let div;
     let isDown = false;
 
-    div = document.createElement("div");
+    const div = document.createElement("div");
     div.style.position = "absolute";
     div.style.left = "0px";
     div.style.top = "0px";
@@ -146,12 +138,11 @@ export class DomManipulatorService {
   }
 
   createAnchorPoints(anchor, left, top, radius) {
-    const k = 500;
-    radius *= k;
-    left *= k;
-    top *= k;
+    radius *= this.sizeFactor - 25;
+    left *= this.sizeFactor - 25;
+    top = 750 - (top * this.sizeFactor);
     if (!document.getElementById(anchor)) {
-      let div = document.createElement("div");
+      const div = document.createElement("div");
       div.style.position = "absolute";
       div.style.left = left + "px";
       div.style.top = top + "px";
@@ -160,7 +151,7 @@ export class DomManipulatorService {
       const map = document.getElementById("map");
       map.appendChild(div);
     } else {
-      let anchorPosition = document.getElementById(anchor);
+      const anchorPosition = document.getElementById(anchor);
       anchorPosition.style.left = left + "px";
       anchorPosition.style.top = top + "px";
     }
@@ -172,17 +163,17 @@ export class DomManipulatorService {
   }
 
   updateAnchorRadius(anchor, left, top, radius) {
-    let circle = document.getElementById(anchor + "Radius")
+    const circle = document.getElementById(anchor + "Radius");
     circle.style.left = left - radius + "px";
     circle.style.top = top - radius + "px";
     circle.style.padding = radius + "px";
   }
 
   createAnchorRadius(anchor, left, top, radius) {
-    let circle = document.createElement("div");
-    circle.style.left = left - radius * 430 + "px";
-    circle.style.top = top - radius * 430 + "px";
-    circle.style.padding = radius * 430 + "px";
+    const circle = document.createElement("div");
+    circle.style.left = left - radius * this.sizeFactor - 25 + "px";
+    circle.style.top = top - radius * this.sizeFactor - 25 + "px";
+    circle.style.padding = radius * this.sizeFactor - 25 + "px";
     circle.id = anchor + "Radius";
     circle.className = "circle";
     const map = document.getElementById("map");
@@ -190,24 +181,31 @@ export class DomManipulatorService {
   }
 
   setTrilaterationPoint(pos) {
-    if (pos.x != NaN && pos.x != null) {
-      console.log(pos.x)
-      const k = 500;
-      pos.x *= k;
-      pos.y *= k;
+    // pos = JSON.parse(pos);
+    if (pos.x != NaN && pos.x != null) {
+      pos.x *= this.sizeFactor - 25;
+      pos.y *= this.sizeFactor - 25;
       if (!document.getElementById("tri")) {
         let div = document.createElement("div");
         div.style.position = "absolute";
         div.style.left = pos.x + "px";
         div.style.top = pos.y + "px";
-        div.className = "tri";
+        div.className = "robot";
         div.id = "tri";
         const map = document.getElementById("map");
         map.appendChild(div);
       } else {
-        let tri = document.getElementById("tri");
+        const tri = document.getElementById("tri");
         tri.style.left = pos.x + "px";
         tri.style.top = pos.y + "px";
+
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.left = pos.x + "px";
+        div.style.top = pos.y + "px";
+        div.className = "tri";
+        const map = document.getElementById("map");
+        map.appendChild(div);
       }
     }
   }

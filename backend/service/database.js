@@ -73,7 +73,7 @@ function robotUpdate(id, x, y) {
   });
 }
 
-function anchorUpdate(id, data) {
+function setAnchorDistance(id, data) {
   return Anchor.update({
     id: id
   }, {
@@ -120,7 +120,6 @@ async function setMovingAverage(id, x, y) {
       x: x,
       y: y
     })
-    console.log(moving);
     await dropData(moving);
     Moving.update({
       id: id
@@ -133,8 +132,8 @@ async function setMovingAverage(id, x, y) {
 
   function dropData(moving) {
     return new Promise((resolve) => {
-      if (moving.data.length >= 20) {
-        while (moving.data.length > 20) {
+      if (moving.data.length >= 40) {
+        while (moving.data.length > 40) {
           moving.data.pop();
         }
       }
@@ -158,7 +157,8 @@ module.exports = {
   getTargetPosition,
   getAnchorParameters,
   getObstacleParameters,
-  anchorUpdate,
+  setAnchorDistance,
+  anchorPositionUpdate,
   robotUpdate,
   targetUpdate,
   obstacleUpdate,

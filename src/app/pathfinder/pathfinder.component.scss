@@ -1,6 +1,6 @@
 :root {
   --mapWidth: 525px;
-  --mapHeight: 525px;
+  --mapHeight: 750px;
 }
 
 #map {
@@ -39,7 +39,7 @@ input {
   position: absolute;
 }
 
-#start {
+.robot {
   background-image: url("../../assets/images/robo.jpg");
   background-position: cover;
   background-size: 100% 100%;

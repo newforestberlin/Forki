@@ -17,6 +17,12 @@ export class PathfinderComponent implements OnInit {
   obstacleHeight = 50;
   obstacleWidth = 70;
   clearance = 10;
+  x0 = 0;
+  x1 = 0;
+  x2 = 1;
+  y0 = 0;
+  y1 = 1;
+  y2 = 1;
   constructor(private domManipulator: DomManipulatorService, private pathfinderService: PathfinderService, private socketListenerService: SocketListenerService) { }
 
   ngOnInit() {
@@ -43,5 +49,9 @@ export class PathfinderComponent implements OnInit {
   }
   setObstacleParameters() {
     this.pathfinderService.setObstacleParameters();
+  }
+
+  setAnchorPosition() {
+    this.pathfinderService.setAnchorPosition(this.x0, this.x1, this.x2, this.y0, this.y1, this.y2)
   }
 }

@@ -38,12 +38,12 @@ async function getRobotPositionRealtime(AN0, AN1, AN2) {
         mean.x /= movingPositionsUpdated.data.length;
         mean.y /= movingPositionsUpdated.data.length;
       } finally {
-        console.log("Error")
+       // console.log("Error")
       }
       pos.x = mean.x
       pos.y = mean.y
     } else {
-      console.log("Can't calculate trilateration")
+      //console.log("Can't calculate trilateration")
     }
     // console.log(mean);
     resolve(pos);

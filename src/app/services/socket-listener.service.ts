@@ -21,8 +21,13 @@ export class SocketListenerService {
       });
     this.socketService.onMessage("anchorParameters")
       .subscribe((anchorParameters: any) => {
-        // console.log(anchorParameters.result);
-        this.domManipulator.createAnchorPoints(anchorParameters.result.id, anchorParameters.result.data.x, anchorParameters.result.data.y, anchorParameters.result.data.dist);
+        for (let i = 0; i < anchorParameters.result.length; i++) {
+          const id = anchorParameters.result[i].anchor;
+          const x = JSON.parse(anchorParameters.result[i].data).x;
+          const y = JSON.parse(anchorParameters.result[i].data).y;
+          const dist = JSON.parse(anchorParameters.result[i].data).dist;
+          this.domManipulator.createAnchorPoints(id, x, y, dist);
+        }
         this.socketService.send("realtimeRobot", "send");
       });
     this.socketService.onMessage("realtimeRobot").subscribe(position => {

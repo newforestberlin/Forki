@@ -1,7 +1,5 @@
-var PF = require('pathfinding');
 var database = require("../service/database");
 var pathfinder = require("../service/pathfinder");
-var trilateration = require("../service/trilateration");
 
 exports.getPath = async (data) => {
   return new Promise(async (resolve) => {
@@ -22,17 +20,6 @@ exports.getPath = async (data) => {
     } else {
       resolve("missing Parameter");
     }
-  });
-}
-
-exports.getRobotPositionRealtime = async () => {
-  return new Promise(async (resolve) => {
-    const AN0 = await database.getAnchorParameters("5C2F");
-    const AN1 = await database.getAnchorParameters("0F8C");
-    const AN2 = await database.getAnchorParameters("8182");
-    if (AN0 && AN1 && AN2) {
-      resolve(await trilateration.getRobotPositionRealtime(AN0, AN1, AN2));
-    } else resolve();
   });
 }
 
@@ -66,7 +53,6 @@ exports.setTargetPosition = (data) => {
   });
 }
 
-
 exports.getObstacleParameters = async (data) => {
   const id = data.id;
   return await database.getObstacleParameters(id);
@@ -75,32 +61,6 @@ exports.getObstacleParameters = async (data) => {
 exports.setObstacleParameters = (data) => {
   return new Promise((resolve) => {
     database.obstacleUpdate(data.id, data.obstacleParameters).then(msg => {
-      resolve(msg);
-    }).catch(err => {
-      resolve(err);
-    });
-  });
-}
-
-exports.getAnchorParameters = async (data) => {
-  const id = data.id;
-  return await database.getAnchorParameters(id);
-}
-
-exports.setAnchorParameter = (data) => {
-  const dataObject = JSON.parse(data.data);
-  return new Promise((resolve) => {
-    database.anchorUpdate(dataObject.id, dataObject).then(msg => {
-      resolve(msg);
-    }).catch(err => {
-      resolve(err);
-    });
-  });
-}
-
-exports.setAnchorPosition = (data) => {
-  return new Promise((resolve) => {
-    database.anchorPositionUpdate(data.id, data).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);

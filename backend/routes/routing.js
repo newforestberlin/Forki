@@ -53,39 +53,4 @@ exports.sockets = (socket, io) => {
       result: result
     });
   });
-
-  // socket.on('anchorParameters', async data => {
-  //   const result = await RoutingController.getAnchorParameters(data);
-  //   io.emit('anchorParameters', {
-  //     result: result
-  //   });
-  // });
-
-  // socket.on('anchorUpdate', async data => {
-  //   io.emit('anchorParameters', {
-  //     result: data
-  //   });
-
-  //   data.map(async anchor => {
-  //     const result = await RoutingController.setAnchorDistance(anchor);
-  //       console.log(anchor)
-  //     // await RoutingController.setAnchorPosition(anchor);
-  //     io.emit('anchorUpdate', {
-  //       result: result
-  //     });
-  //   });
-  // });
-
-  // socket.on('anchorPositionUpdate', async data => {
-  //   const result = await RoutingController.setAnchorPosition(data);
-  //   io.emit('anchorPositionUpdate', {
-  //     result: result
-  //   });
-  // });
-
-  // socket.on('position', async data => {
-  //   // io.emit('realtimeRobot', {
-  //   //   position: data
-  //   // });
-  // });
 }
