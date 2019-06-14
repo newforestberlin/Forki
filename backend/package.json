@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "ws": "nodemon ./websocket.js",
+    "start": "nodemon app.js",
     "test": "make test"
   },
   "repository": {
@@ -27,6 +26,7 @@
     "mongoose": "^4.10.8",
     "morgan": "^1.9.1",
     "node-dijkstra": "^2.5.0",
+    "node-trilateration": "^1.0.0",
     "nodemon": "^1.19.0",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",

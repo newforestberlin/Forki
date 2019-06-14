@@ -2,6 +2,7 @@ var Robot = require('../models/robot');
 var Target = require('../models/target');
 var Obstacle = require('../models/obstacle');
 var Anchor = require('../models/anchor');
+var Moving = require('../models/moving');
 
 
 function getRobotPosition(id) {
@@ -20,6 +21,16 @@ function getTargetPosition(id) {
       id: id
     }).then(targetPosition => {
       resolve(targetPosition[0]);
+    });
+  });
+}
+
+function getAnchorParameters(id) {
+  return new Promise((resolve) => {
+    Anchor.find({
+      id: id
+    }).then(anchorParameter => {
+      resolve(anchorParameter[0]);
     });
   });
 }
@@ -62,12 +73,11 @@ function robotUpdate(id, x, y) {
   });
 }
 
-function anchorUpdate(anchor, data) {
-  data = JSON.parse(data)
+function anchorUpdate(id, data) {
   return Anchor.update({
-    id: anchor
+    id: id
   }, {
-    id: anchor,
+    id: id,
     data: {
       x: data.x,
       y: data.y,
@@ -77,7 +87,6 @@ function anchorUpdate(anchor, data) {
     upsert: true
   })
 }
-
 
 function obstacleUpdate(id, obstacleParameters) {
   return Obstacle.update({
@@ -90,12 +99,62 @@ function obstacleUpdate(id, obstacleParameters) {
   })
 }
 
+async function setMovingAverage(id, x, y) {
+  return new Promise(async (resolve) => {
+    let moving = await getMovingAverage(id);
+    if (!moving) {
+      moving = {
+        id: id,
+        data: []
+      };
+    }
+    moving.data.unshift({
+      x: x,
+      y: y
+    })
+    console.log(moving);
+    await dropData(moving);
+    Moving.update({
+      id: id
+    }, moving, {
+      upsert: true
+    }).then(movingUpdated => {
+      resolve(movingUpdated);
+    });
+  });
+
+  function dropData(moving) {
+    return new Promise((resolve) => {
+      if (moving.data.length >= 20) {
+        while (moving.data.length > 20) {
+          moving.data.pop();
+        }
+      }
+      resolve();
+    });
+  };
+}
+
+
+function getMovingAverage(id) {
+  return new Promise((resolve) => {
+    Moving.find({
+      id: id
+    }).then(moving => {
+      resolve(moving[0]);
+    });
+  })
+}
+
 module.exports = {
   getRobotPosition,
   getTargetPosition,
+  getAnchorParameters,
   getObstacleParameters,
   anchorUpdate,
   robotUpdate,
   targetUpdate,
   obstacleUpdate,
+  setMovingAverage,
+  getMovingAverage
 }

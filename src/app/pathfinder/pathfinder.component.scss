@@ -1,6 +1,6 @@
-:root{
-  --mapWidth: 700px;
-  --mapHeight: 500px;
+:root {
+  --mapWidth: 525px;
+  --mapHeight: 525px;
 }
 
 #map {
@@ -33,16 +33,53 @@ input {
   background: white;
   background-image: url("../../assets/images/flag.svg");
   background-position: cover;
-  background-size: 100% 100%; 
+  background-size: 100% 100%;
   height: 40px;
   width: 40px;
   position: absolute;
 }
+
 #start {
   background-image: url("../../assets/images/robo.jpg");
   background-position: cover;
-  background-size: 100% 100%; 
+  background-size: 100% 100%;
   height: 50px;
   width: 50px;
   position: absolute;
 }
+
+.anchor {
+  background: rgba(255, 0, 0, 0.514);
+  background-image: url("../../assets/images/anchor.png");
+  background-position: cover;
+  background-size: 100% 100%;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  border-radius: 50%;
+  border: solid 2px red;
+  z-index: -1;
+}
+
+.circle {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  border: solid 2px rgba(255, 0, 0, 0.425);
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.205);
+  z-index: -1;
+  transition: all ease-in-out 0.2s;
+}
+
+.tri {
+  height: 10px;
+  width:10px;
+  position: absolute;
+  border: solid 2px rgb(0, 132, 255);
+  border-radius: 50%;
+  background: rgba(0, 162, 255, 0.205);
+  transition: all ease-in-out 0.2s;
+}
+
+

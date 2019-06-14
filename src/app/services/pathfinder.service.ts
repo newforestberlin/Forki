@@ -11,8 +11,8 @@ interface Coordinate {
   providedIn: 'root'
 })
 export class PathfinderService {
-  width = 700;
-  height = 500;
+  width = 525;
+  height = 525;
   elementSize = 5;
   clearance = 10;
 
@@ -76,11 +76,13 @@ export class PathfinderService {
     });
   }
 
-  /* getObstacleParameter() {
-    return new Promise(async (resolve) => {
-      return await this.databaseService.getObstacleParameters();
-    });
-  } */
+  async getAnchorParameters() {
+    setInterval(async () => {
+      await this.socketService.send("anchorParameters", { id: "5C2F" });
+      await this.socketService.send("anchorParameters", { id: "0F8C" });
+      await this.socketService.send("anchorParameters", { id: "8182" });
+    }, 100);
+  }
 
   async visualizePath(path) {
     let pathString = "M ";

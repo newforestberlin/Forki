@@ -72,8 +72,8 @@ export class DomManipulatorService {
     let isDown = false;
     div = document.createElement("div");
     div.style.position = "absolute";
-    div.style.left = "0px";
-    div.style.bottom = "0px";
+    div.style.left = "10px";
+    div.style.bottom = "10px";
     div.id = "start";
     const map = document.getElementById("map");
     map.appendChild(div);
@@ -112,8 +112,8 @@ export class DomManipulatorService {
 
     div = document.createElement("div");
     div.style.position = "absolute";
-    div.style.right = "0px";
-    div.style.top = "0px";
+    div.style.right = "10px";
+    div.style.top = "10px";
     div.id = "target";
     const map = document.getElementById("map");
     map.appendChild(div);
@@ -143,5 +143,72 @@ export class DomManipulatorService {
         div.style.top = (mousePosition.y + offset[1]) + 'px';
       }
     }, true);
+  }
+
+  createAnchorPoints(anchor, left, top, radius) {
+    const k = 500;
+    radius *= k;
+    left *= k;
+    top *= k;
+    if (!document.getElementById(anchor)) {
+      let div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.left = left + "px";
+      div.style.top = top + "px";
+      div.className = "anchor";
+      div.id = anchor;
+      const map = document.getElementById("map");
+      map.appendChild(div);
+    } else {
+      let anchorPosition = document.getElementById(anchor);
+      anchorPosition.style.left = left + "px";
+      anchorPosition.style.top = top + "px";
+    }
+    if (!document.getElementById(anchor + "Radius")) {
+      this.createAnchorRadius(anchor, left, top, radius);
+    } else {
+      this.updateAnchorRadius(anchor, left, top, radius);
+    }
+  }
+
+  updateAnchorRadius(anchor, left, top, radius) {
+    let circle = document.getElementById(anchor + "Radius")
+    circle.style.left = left - radius + "px";
+    circle.style.top = top - radius + "px";
+    circle.style.padding = radius + "px";
+  }
+
+  createAnchorRadius(anchor, left, top, radius) {
+    let circle = document.createElement("div");
+    circle.style.left = left - radius * 430 + "px";
+    circle.style.top = top - radius * 430 + "px";
+    circle.style.padding = radius * 430 + "px";
+    circle.id = anchor + "Radius";
+    circle.className = "circle";
+    const map = document.getElementById("map");
+    map.appendChild(circle);
+  }
+
+  setTrilaterationPoint(pos) {
+    if (pos.x != NaN && pos.x != null) {
+      console.log(pos.x)
+      const k = 500;
+      pos.x *= k;
+      pos.y *= k;
+      if (!document.getElementById("tri")) {
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.left = pos.x + "px";
+        div.style.top = pos.y + "px";
+        div.className = "tri";
+        div.id = "tri";
+        const map = document.getElementById("map");
+        map.appendChild(div);
+      } else {
+        let tri = document.getElementById("tri");
+        tri.style.left = pos.x + "px";
+        tri.style.top = pos.y + "px";
+      }
+    }
   }
 }
