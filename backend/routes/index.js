@@ -14,6 +14,18 @@ exports.sockets = (socket, io) => {
     });
   });
 
+  socket.on('robotupdate', async data => {
+    const result = await RoutingController.setRobotPosition(data);
+    io.emit('robotupdate', result);
+  });
+
+  socket.on('realtimeRobot', async data => {
+    const position = await RoutingController.getRobotPositionRealtime();
+    io.emit('realtimeRobot', {
+      position
+    });
+  });
+
   socket.on('targetposition', async data => {
     const position = await RoutingController.getTargetPosition(data);
     io.emit('targetposition', {
@@ -21,9 +33,9 @@ exports.sockets = (socket, io) => {
     });
   });
 
-  socket.on('anchorParameters', async data => {
-    const result = await RoutingController.getAnchorParameters(data);
-    io.emit('anchorParameters', {
+  socket.on('targetupdate', async data => {
+    const result = await RoutingController.setTargetPosition(data);
+    io.emit('targetupdate', {
       result: result
     });
   });
@@ -35,20 +47,6 @@ exports.sockets = (socket, io) => {
     });
   });
 
-  socket.on('robotupdate', async data => {
-    console.log('update robot: ' + data);
-    const result = await RoutingController.setRobotPosition(data);
-    io.emit('robotupdate', result);
-  });
-
-  socket.on('targetupdate', async data => {
-    console.log('update target: ' + data);
-    const result = await RoutingController.setTargetPosition(data);
-    io.emit('targetupdate', {
-      result: result
-    });
-  });
-
   socket.on('obstacleupdate', async data => {
     const result = await RoutingController.setObstacleParameters(data);
     io.emit('obstacleupdate', {
@@ -56,16 +54,26 @@ exports.sockets = (socket, io) => {
     });
   });
 
-  socket.on('anchorUpdate', async data => {
-    data.map(async anchor => {
-      await RoutingController.setAnchorParameter(anchor);
+  socket.on('anchorParameters', async data => {
+    const result = await RoutingController.getAnchorParameters(data);
+    io.emit('anchorParameters', {
+      result: result
     });
   });
 
-  socket.on('realtimeRobot', async data => {
-      const position = await RoutingController.getRobotPositionRealtime();
-      io.emit('realtimeRobot', {
-        position
+  socket.on('anchorUpdate', async data => {
+    data.map(async anchor => {
+      const result = await RoutingController.setAnchorParameter(anchor);
+      io.emit('anchorUpdate', {
+        result: result
       });
+    });
+  });
+
+  socket.on('anchorPositionUpdate', async data => {
+    const result = await RoutingController.setAnchorPosition(data);
+    io.emit('anchorPositionUpdate', {
+      result: result
+    });
   });
 }

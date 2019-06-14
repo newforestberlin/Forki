@@ -6,10 +6,10 @@ var trilateration = require("../service/trilateration");
 exports.getPath = async (data) => {
   return new Promise(async (resolve) => {
     const id = data.id;
-    const width = data.width; // placeholder
-    const height = data.height; // placeholder
-    const elementSize = data.elementSize; // placeholder
-    const clearance = data.clearance; // placeholder
+    const width = data.width;
+    const height = data.height;
+    const elementSize = data.elementSize;
+    const clearance = data.clearance;
     const robotPosition = await database.getRobotPosition(id);
     const targetPosition = await database.getTargetPosition(id);
     if (targetPosition.x || robotPosition.x) {
@@ -36,25 +36,24 @@ exports.getRobotPositionRealtime = async () => {
   });
 }
 
-
 exports.getRobotPosition = async (data) => {
   const id = data.id;
   return await database.getRobotPosition(id);
 }
 
+exports.setRobotPosition = (data) => {
+  return new Promise((resolve) => {
+    database.robotUpdate(data.id, data.x, data.y).then(msg => {
+      resolve(msg);
+    }).catch(err => {
+      resolve(err);
+    });
+  });
+}
+
 exports.getTargetPosition = async (data) => {
   const id = data.id;
   return await database.getTargetPosition(id);
-}
-
-exports.getAnchorParameters = async (data) => {
-  const id = data.id;
-  return await database.getAnchorParameters(id);
-}
-
-exports.getObstacleParameters = async (data) => {
-  const id = data.id;
-  return await database.getObstacleParameters(id);
 }
 
 exports.setTargetPosition = (data) => {
@@ -67,14 +66,25 @@ exports.setTargetPosition = (data) => {
   });
 }
 
-exports.setRobotPosition = (data) => {
+
+exports.getObstacleParameters = async (data) => {
+  const id = data.id;
+  return await database.getObstacleParameters(id);
+}
+
+exports.setObstacleParameters = (data) => {
   return new Promise((resolve) => {
-    database.robotUpdate(data.id, data.x, data.y).then(msg => {
+    database.obstacleUpdate(data.id, data.obstacleParameters).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);
     });
   });
+}
+
+exports.getAnchorParameters = async (data) => {
+  const id = data.id;
+  return await database.getAnchorParameters(id);
 }
 
 exports.setAnchorParameter = (data) => {
@@ -88,12 +98,13 @@ exports.setAnchorParameter = (data) => {
   });
 }
 
-exports.setObstacleParameters = (data) => {
+exports.setAnchorPosition = (data) => {
   return new Promise((resolve) => {
-    database.obstacleUpdate(data.id, data.obstacleParameters).then(msg => {
+    database.anchorPositionUpdate(data.id, data).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);
     });
   });
 }
+

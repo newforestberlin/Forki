@@ -5,19 +5,19 @@ let i = 0;
 async function getRobotPositionRealtime(AN0, AN1, AN2) {
   return new Promise(async (resolve) => {
     var beacons = [{
-        x: AN0.data.x,
-        y: AN0.data.y,
-        distance: AN0.data.dist,
+        x: AN0.x,
+        y: AN0.y,
+        distance: AN0.dist,
       },
       {
-        x: AN1.data.x,
-        y: AN1.data.y,
-        distance: AN1.data.dist,
+        x: AN1.x,
+        y: AN1.y,
+        distance: AN1.dist,
       },
       {
-        x: AN2.data.x,
-        y: AN2.data.y,
-        distance: AN2.data.dist,
+        x: AN2.x,
+        y: AN2.y,
+        distance: AN2.dist,
       }
     ];
     var pos = trilateration.calculate(beacons);
@@ -37,11 +37,13 @@ async function getRobotPositionRealtime(AN0, AN1, AN2) {
         });
         mean.x /= movingPositionsUpdated.data.length;
         mean.y /= movingPositionsUpdated.data.length;
-      } catch {
-        console.log("Error");
+      } finally {
+        console.log("Error")
       }
-    pos.x = mean.x
-    pos.y = mean.y
+      pos.x = mean.x
+      pos.y = mean.y
+    } else {
+      console.log("Can't calculate trilateration")
     }
     // console.log(mean);
     resolve(pos);

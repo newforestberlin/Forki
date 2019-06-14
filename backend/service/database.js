@@ -78,11 +78,19 @@ function anchorUpdate(id, data) {
     id: id
   }, {
     id: id,
-    data: {
-      x: data.x,
-      y: data.y,
-      dist: data.dist
-    }
+    dist: data.dist
+  }, {
+    upsert: true
+  })
+}
+
+function anchorPositionUpdate(id, data) {
+  return Anchor.update({
+    id: id
+  }, {
+    id: id,
+    x: data.x,
+    y: data.y,
   }, {
     upsert: true
   })
@@ -134,7 +142,6 @@ async function setMovingAverage(id, x, y) {
     });
   };
 }
-
 
 function getMovingAverage(id) {
   return new Promise((resolve) => {
