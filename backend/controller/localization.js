@@ -7,10 +7,8 @@ exports.getAnchorParameters = async (data) => {
 }
 
 exports.setAnchorDistance = (data) => {
-  return
-  const dataObject = JSON.parse(data.data);
   return new Promise((resolve) => {
-    database.setAnchorDistance(dataObject.id, dataObject).then(msg => {
+    database.setAnchorDistance(data.data.id, data.data).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);
@@ -20,7 +18,7 @@ exports.setAnchorDistance = (data) => {
 
 exports.setAnchorPosition = (data) => {
   return new Promise((resolve) => {
-    database.anchorPositionUpdate(data.id, data).then(msg => {
+    database.anchorPositionUpdate(data.data.id, data.data).then(msg => {
       resolve(msg);
     }).catch(err => {
       resolve(err);

@@ -4,6 +4,7 @@ exports.sockets = (socket, io) => {
 
   // listener to the dwm1001 anchor socket
   socket.on('setAnchorParameters', async anchors => {
+
     anchors.map(async anchor => {
       await LocalizationController.setAnchorPosition(anchor);
       await LocalizationController.setAnchorDistance(anchor);
@@ -13,9 +14,8 @@ exports.sockets = (socket, io) => {
 
   // listener to the dwm1001 position socket
   socket.on('setRobotPosition', async data => {
-    console.log(data)
     io.emit('getRobotPosition', {
-      result: data
+      position: data
     });
   });
 
