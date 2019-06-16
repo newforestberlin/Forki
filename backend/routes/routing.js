@@ -7,24 +7,24 @@ exports.sockets = (socket, io) => {
       path);
   });
 
-  socket.on('robotposition', async data => {
-    const position = await RoutingController.getRobotPosition(data);
-    io.emit('robotposition', {
-      position: position
-    });
-  });
+  // socket.on('robotposition', async data => {
+  //   const position = await RoutingController.getRobotPosition(data);
+  //   io.emit('robotposition', {
+  //     position: position
+  //   });
+  // });
 
   socket.on('robotupdate', async data => {
     const result = await RoutingController.setRobotPosition(data);
     io.emit('robotupdate', result);
   });
 
-  socket.on('realtimeRobot', async data => {
-    const position = await RoutingController.getRobotPositionRealtime();
-    io.emit('realtimeRobot', {
-      position
-    });
-  });
+  // socket.on('realtimeRobot', async data => {
+  //   const position = await RoutingController.getRobotPositionRealtime();
+  //   io.emit('realtimeRobot', {
+  //     position
+  //   });
+  // });
 
   socket.on('targetposition', async data => {
     const position = await RoutingController.getTargetPosition(data);
