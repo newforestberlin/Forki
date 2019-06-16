@@ -19,20 +19,22 @@ export class SocketListenerService {
       .subscribe((path: any) => {
         this.pathfinderService.visualizePath(path);
       });
-    this.socketService.onMessage("anchorParameters")
+    this.socketService.onMessage("getAnchorParameters")
       .subscribe((anchorParameters: any) => {
-        for (let i = 0; i < anchorParameters.result.length; i++) {
-          const id = anchorParameters.result[i].anchor;
-          const x = JSON.parse(anchorParameters.result[i].data).x;
-          const y = JSON.parse(anchorParameters.result[i].data).y;
-          const dist = JSON.parse(anchorParameters.result[i].data).dist;
+        for (let i = 0; i < anchorParameters.length; i++) {
+          const id = anchorParameters[i].anchor;
+          const x = anchorParameters[i].data.x;
+          const y = anchorParameters[i].data.y;
+          const dist = anchorParameters[i].data.dist;
           this.domManipulator.createAnchorPoints(id, x, y, dist);
         }
-        this.socketService.send("realtimeRobot", "send");
+        this.socketService.send("getDatabaseRobotPosition", "get Position")
       });
-    this.socketService.onMessage("realtimeRobot").subscribe(position => {
-      console.log(position);
+    this.socketService.onMessage("getDatabaseRobotPosition").subscribe(position => {
       this.domManipulator.setTrilaterationPoint(position.position);
     });
+    // this.socketService.onMessage("getRobotPosition").subscribe(position => {
+    //   this.domManipulator.setTrilaterationPoint(position.position);
+    // });
   }
 }
