@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PathfinderComponent } from './pathfinder/pathfinder.component';
 import { SocketService } from './services/socket.service';
+import { MovementComponent } from './movement/movement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PathfinderComponent
+    PathfinderComponent,
+    MovementComponent
   ],
   imports: [
     BrowserModule,
