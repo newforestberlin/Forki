@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-movement',
@@ -7,30 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 
   ngOnInit() {
+    this.socketService.initSocket();
   }
 
-  moveLeft() {
+  async moveLeft() {
+    await this.socketService.send("setMovement", { direction: "left", time: 1 });
+  }
+
+  async moveRight() {
+    await this.socketService.send("setMovement", { direction: "right", time: 1 });
 
   }
 
-  moveRight() {
-
+  async moveForwards() {
+    await this.socketService.send("setMovement", { direction: "forwards", time: 1 });
   }
 
-  moveForewards() {
-
+  async moveBackwards() {
+    await this.socketService.send("setMovement", { direction: "backwards", time: 1 });
   }
 
-  moveBackwards() {
-  }
-
-  turnRight() {
+  async turnRight() {
+    await this.socketService.send("setMovement", { direction: "turn right", time: 1 });
 
   }
-  turnLeft() {
+  async turnLeft() {
+    await this.socketService.send("setMovement", { direction: "turn left", time: 1 });
 
   }
 }

@@ -1,0 +1,23 @@
+.controller {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+
+.break {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.container {
+    display: flex;
+}

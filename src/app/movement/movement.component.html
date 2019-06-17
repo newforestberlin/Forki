@@ -1,11 +1,16 @@
-<div class="container">
-  <button class="btn btn-dark m-2" (click)="moveForewards()">Forewards</button>
-  <br>
-  <button class="btn btn-dark m-2" (click)="moveLeft()"><i class="fas fa-arrow-left text-light"></i>w</button>
-  <button class="btn btn-dark m-2" (click)="moveRight()"><i class="fas fa-arrow-right text-light"></i></button>
-  <br>
-  <button class="btn btn-dark m-2" (click)="moveBackwards()">Backwards</button>
-  <br>
-  <button class="btn btn-dark m-2" (click)="turnLeft()">Turn Left</button>
-  <button class="btn btn-dark m-2" (click)="turnRight()">Turn Right</button>
+<div class="container mt-5">
+  <div class="controller">
+    <div class="break">
+      <button class="btn btn-dark" (click)="moveForwards()">W</button>
+    </div>
+    <div class="break">
+      <button class="btn btn-dark mr-5" (click)="moveLeft()"><i class="fas fa-arrow-left text-light"></i>A</button>
+      <button class="btn btn-dark" (click)="moveRight()"><i class="fas fa-arrow-right text-light"></i>D</button>
+    </div>
+    <div class="break">
+      <button class="btn btn-dark" (click)="moveBackwards()">S</button>
+    </div>
+  </div>
+    <button class="btn btn-dark mr-2" (click)="turnLeft()">Turn Left</button>
+    <button class="btn btn-dark" (click)="turnRight()">Turn Right</button>
 </div>
