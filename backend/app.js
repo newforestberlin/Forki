@@ -1,22 +1,33 @@
 const app = require('express')();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const ioListener = require('socket.io')(http);
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const socketRouting = require('./routes/routing');
+const socketMovement = require('./routes/movement');
 const socketLocalization = require('./routes/localization');
+const io = require('socket.io-client')
+const socket = io.connect('http://192.168.2.67:3000', {
+  reconnection: true
+});
 require('dotenv').config()
 
 
 mongoose.connect(process.env.MONGO_DB);
 
-io.on('connection', (socket) => {
+ioListener.on('connection', (socket) => {
   console.log('user connected');
-  socketLocalization.sockets(socket, io);
-  socketRouting.sockets(socket, io);
+  socketLocalization.sockets(socket, ioListener);
+  socketRouting.sockets(socket, ioListener);
+  socketMovement.sockets(socket, io);
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
+});
+
+socket.on('connect', () => {
+  console.log('Connected');
+  socketMovement.sockets(socket, io);
 });
 
 http.listen(3000, () => {
