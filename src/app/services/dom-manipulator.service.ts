@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
+import { PathfinderService } from './pathfinder.service';
+import * as $ from 'jquery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DomManipulatorService {
   obstacleNumber = 0;
-  sizeFactor = 384;
-
+  width = 525;
+  height = 600;
+  scaleX = 1;
+  scaleY = 1;
   constructor() { }
+
+
+  setMapSize(width, height) {
+    this.width = width;
+    this.height = height;
+    $(":root").css("--mapWidth", this.width + "px");
+    $(":root").css("--mapHeight", this.height + "px");
+  }
 
   createObstacle(width, height) {
     let mousePosition;
@@ -96,6 +108,7 @@ export class DomManipulatorService {
       }
     }, true);
   }
+
   createTargetPoint() {
     let mousePosition;
     let offset = [0, 0];
@@ -137,10 +150,15 @@ export class DomManipulatorService {
     }, true);
   }
 
-  createAnchorPoints(anchor, left, top, radius) {
-    radius *= this.sizeFactor - 25;
-    left *= this.sizeFactor - 25;
-    top = 750 - (top * this.sizeFactor);
+  createAnchorPoints(anchor, left, top, radius, scaleX, scaleY) {
+    this.scaleX = scaleX;
+    this.scaleY = scaleY;
+    top *= this.height / scaleY - 25;
+    this.width = Math.round(this.height * scaleX / scaleY);
+    left *= this.width / scaleX - 25;
+    this.setMapSize(this.width, this.height);
+    radius *= this.height / scaleY;
+
     if (!document.getElementById(anchor)) {
       const div = document.createElement("div");
       div.style.position = "absolute";
@@ -171,9 +189,9 @@ export class DomManipulatorService {
 
   createAnchorRadius(anchor, left, top, radius) {
     const circle = document.createElement("div");
-    circle.style.left = left - radius * this.sizeFactor - 25 + "px";
-    circle.style.top = top - radius * this.sizeFactor - 25 + "px";
-    circle.style.padding = radius * this.sizeFactor - 25 + "px";
+    circle.style.left = left - radius * this.height / this.scaleY - 25 + "px";
+    circle.style.top = top - radius * this.height / this.scaleY - 25 + "px";
+    circle.style.padding = radius * this.height / this.scaleY - 25 + "px";
     circle.id = anchor + "Radius";
     circle.className = "circle";
     const map = document.getElementById("map");
@@ -182,22 +200,22 @@ export class DomManipulatorService {
 
   setTrilaterationPoint(pos) {
     // pos = JSON.parse(pos);
-    if (pos.x != NaN && pos.x != null) {
-      pos.x *= this.sizeFactor - 25;
-      pos.y *= this.sizeFactor - 25;
+    if (!isNaN(pos.x) && pos.x != null) {
+      pos.x *= this.height / this.scaleY;
+      pos.y *= this.height / this.scaleY;
       if (!document.getElementById("tri")) {
         let div = document.createElement("div");
         div.style.position = "absolute";
-        div.style.left = pos.x + "px";
-        div.style.top = pos.y + "px";
+        div.style.left = pos.x - 20 + "px";
+        div.style.top = pos.y - 20 + "px";
         div.className = "robot";
         div.id = "tri";
         const map = document.getElementById("map");
         map.appendChild(div);
       } else {
         const tri = document.getElementById("tri");
-        tri.style.left = pos.x + "px";
-        tri.style.top = pos.y + "px";
+        tri.style.left = pos.x - 20 + "px";
+        tri.style.top = pos.y - 20 + "px";
 
         let div = document.createElement("div");
         div.style.position = "absolute";
