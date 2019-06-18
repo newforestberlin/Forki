@@ -8,35 +8,24 @@ import { SocketService } from '../services/socket.service';
 })
 export class MovementComponent implements OnInit {
 
+  send: any;
   constructor(private socketService: SocketService) { }
 
   ngOnInit() {
     this.socketService.initSocket();
   }
 
-  async moveLeft() {
-    await this.socketService.send("setMovement", { direction: "left", time: 1 });
+  public mouseUp() {
+    clearInterval(this.send);
   }
 
-  async moveRight() {
-    await this.socketService.send("setMovement", { direction: "right", time: 1 });
-
+  public mouseDown(direction) {
+    console.log(direction)
+    this.send = setInterval(() => this.setDirection(direction), 100);
   }
 
-  async moveForwards() {
-    await this.socketService.send("setMovement", { direction: "forwards", time: 1 });
-  }
-
-  async moveBackwards() {
-    await this.socketService.send("setMovement", { direction: "backwards", time: 1 });
-  }
-
-  async turnRight() {
-    await this.socketService.send("setMovement", { direction: "turn right", time: 1 });
-
-  }
-  async turnLeft() {
-    await this.socketService.send("setMovement", { direction: "turn left", time: 1 });
-
+  setDirection(direction) {
+    console.log(direction)
+    this.socketService.send("setMovement", { direction: direction, time: 0.1 });
   }
 }

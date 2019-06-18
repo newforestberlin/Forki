@@ -1,16 +1,37 @@
-<div class="container mt-5">
-  <div class="controller">
-    <div class="break">
-      <button class="btn btn-primary" (click)="moveForwards()">W</button>
-    </div>
-    <div class="break">
-      <button class="btn btn-primary mr-5" (click)="moveLeft()"><i class="fas fa-arrow-left text-light"></i>A</button>
-      <button class="btn btn-primary" (click)="moveRight()"><i class="fas fa-arrow-right text-light"></i>D</button>
-    </div>
-    <div class="break">
-      <button class="btn btn-primary" (click)="moveBackwards()">S</button>
+<div class="bg">
+  <div class="container">
+    <h1 class="text-uppercase pt-5 w-100 text-danger">Forki remote controll</h1>
+    <div class="row">
+      <div class="col-6">
+        <div class="controller-row">
+          <button class="btn btn-danger" (mousedown)='mouseDown("forwards")' (mouseup)="mouseUp()">
+              <i class="fas fa-arrow-left"></i>
+          </button>
+        </div>
+        <div class="controller-row">
+          <button class="btn btn-danger mr-5" (mousedown)='mouseDown("left")' (mouseup)="mouseUp()">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="btn btn-danger" (mousedown)='mouseDown("right")' (mouseup)="mouseUp()">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+        </div>
+        <div class="controller-row">
+          <button class="btn btn-danger" (mousedown)='mouseDown("backwards")' (mouseup)="mouseUp()">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="controller">
+          <button class="btn btn-danger mr-2" (mousedown)='mouseDown("turn left")' (mouseup)="mouseUp()">
+            <i class="fas fa-undo"></i>
+          </button>
+          <button class="btn btn-danger" (mousedown)='mouseDown("turn right")' (mouseup)="mouseUp()">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-    <button class="btn btn-primary mr-2" (click)="turnLeft()">Turn Left</button>
-    <button class="btn btn-primary" (click)="turnRight()">Turn Right</button>
 </div>

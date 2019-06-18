@@ -6,9 +6,7 @@ exports.sockets = (socket, io) => {
       console.log("wrong command");
       return;
     }
-    const piSocket = io.connect('http://192.168.2.67:3000', {
-      reconnection: true
-    });
+    const piSocket = io.connect('http://192.168.2.67:3000');
     piSocket.emit('setMovement',
       command);
   });
