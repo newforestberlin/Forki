@@ -41,7 +41,7 @@ export class PathfinderComponent implements OnInit {
   }
 
   setMapSize() {
-    this.pathfinderService.setMapSize(this.mapWidth, this.mapHeight);
+    this.domManipulator.setMapSize(this.mapWidth, this.mapHeight);
   }
 
   setTargetPosition() {
