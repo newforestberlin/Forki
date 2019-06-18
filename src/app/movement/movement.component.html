@@ -1,37 +1,32 @@
-<div class="bg">
-  <div class="container">
-    <h1 class="text-uppercase pt-5 w-100 text-danger">Forki remote controll</h1>
-    <div class="row">
-      <div class="col-6">
-        <div class="controller-row">
-          <button class="btn btn-danger" (mousedown)='mouseDown("forwards")' (mouseup)="mouseUp()">
-              <i class="fas fa-arrow-left"></i>
-          </button>
-        </div>
-        <div class="controller-row">
-          <button class="btn btn-danger mr-5" (mousedown)='mouseDown("left")' (mouseup)="mouseUp()">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-          <button class="btn btn-danger" (mousedown)='mouseDown("right")' (mouseup)="mouseUp()">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-        </div>
-        <div class="controller-row">
-          <button class="btn btn-danger" (mousedown)='mouseDown("backwards")' (mouseup)="mouseUp()">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-        </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="controller-row">
+        <button class="btn btn-danger" (mousedown)='mouseDown("forwards")' (mouseup)="mouseUp()">
+          <i class="fas fa-arrow-up"></i>
+        </button>
       </div>
-      <div class="col-6">
-        <div class="controller">
-          <button class="btn btn-danger mr-2" (mousedown)='mouseDown("turn left")' (mouseup)="mouseUp()">
-            <i class="fas fa-undo"></i>
-          </button>
-          <button class="btn btn-danger" (mousedown)='mouseDown("turn right")' (mouseup)="mouseUp()">
-            <i class="fas fa-redo"></i>
-          </button>
-        </div>
+      <div class="controller-row">
+        <button class="btn btn-danger mr-5" (mousedown)='mouseDown("left")' (mouseup)="mouseUp()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="btn btn-danger" (mousedown)='mouseDown("right")' (mouseup)="mouseUp()">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="controller-row">
+        <button class="btn btn-danger" (mousedown)='mouseDown("backwards")' (mouseup)="mouseUp()">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="controller">
+        <button class="btn btn-danger mr-2" (mousedown)='mouseDown("turn left")' (mouseup)="mouseUp()">
+          <i class="fas fa-undo"></i>
+        </button>
+        <button class="btn btn-danger" (mousedown)='mouseDown("turn right")' (mouseup)="mouseUp()">
+          <i class="fas fa-redo"></i>
+        </button>
       </div>
     </div>
   </div>
-</div>
