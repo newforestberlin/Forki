@@ -2,35 +2,23 @@ import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from "@angular/common/http";
 import { SocketService } from './socket.service';
+import { DomManipulatorService } from './dom-manipulator.service';
 
-interface Coordinate {
-  x: number;
-  y: number
-}
 @Injectable({
   providedIn: 'root'
 })
 export class PathfinderService {
-  width = 525;
-  height = 725;
   elementSize = 5;
   clearance = 10;
 
-  constructor(private http: HttpClient, private socketService: SocketService
+  constructor(private http: HttpClient, private socketService: SocketService, private domService: DomManipulatorService
   ) { }
-
-  setMapSize(width, height) {
-    this.width = width;
-    this.height = height;
-    $(":root").css("--mapWidth", this.width + "px");
-    $(":root").css("--mapHeight", this.height + "px");
-  }
 
   async findPath() {
     await this.setTargetPosition();
     await this.setRobotPosition();
     await this.setObstacleParameters();
-    const data = { id: 1, width: this.width, height: this.height, elementSize: this.elementSize, clearance: this.clearance }
+    const data = { id: 1, width: this.domService.width, height: this.domService.height, elementSize: this.elementSize, clearance: this.clearance }
     const path = await this.socketService.send("getPath", data);
   }
 
