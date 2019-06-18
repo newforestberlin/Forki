@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { PathfinderService } from './pathfinder.service';
 import * as $ from 'jquery';
 
 @Injectable({
