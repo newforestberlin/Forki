@@ -27,7 +27,7 @@ ioListener.on('connection', (socket) => {
 
 socket.on('connect', () => {
   console.log('Connected');
-  socketMovement.sockets(socket, io);
+  socketMovement.sockets(socket);
 });
 
 http.listen(3000, () => {
