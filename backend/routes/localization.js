@@ -4,7 +4,6 @@ exports.sockets = (socket, io) => {
 
   // listener to the dwm1001 anchor socket
   socket.on('setAnchorParameters', async anchors => {
-
     anchors.map(async anchor => {
       await LocalizationController.setAnchorPosition(anchor);
       await LocalizationController.setAnchorDistance(anchor);
