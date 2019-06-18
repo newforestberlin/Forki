@@ -1,22 +1,6 @@
-<div class="container mt-2">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="text-light text-uppercase">Forki the smart robot</h1>
-    </div>
-
-    <div class="col-12">
-      <div id="map">
-        <div class="test"></div>
-        <svg class="path">
-          <path id="path" d="" stroke="#00a2ff" stroke-linejoin="round" stroke-width="2" fill="none" />
-        </svg>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <h1 class="text-light  text-uppercase mt-2">Pathfinder</h1>
-      <div class="row">
-        <!-- <div class="col-8">
+<h1 class="text-light  text-uppercase mt-2">Pathfinder</h1>
+<div class="row">
+  <!-- <div class="col-8">
           <h4 class="text-light">Map height:</h4>
         </div>
         <div class="col-4">
@@ -29,20 +13,20 @@
         <div class="col-12 mt-2">
           <button class="btn btn-dark" (click)="setMapSize()">Set Map Size</button>
         </div> -->
-        <div class="col-8 mt-4">
-          <h4 class="text-light">Obstacle height:</h4>
-        </div>
-        <div class="col-4 mt-4">
-          <input [(ngModel)]="obstacleHeight" class="form-control" type="number">
-        </div>
-        <div class="col-8 mt-2">
-          <h4 class="text-light">Obstacle width:</h4>
-        </div>
-        <div class="col-4"><input [(ngModel)]="obstacleWidth" class="form-control mt-2" type="number"></div>
-        <div class="col-12 mt-2">
-          <button class="btn btn-light" (click)="createObstacle()">Create Obstacle</button>
-        </div>
-        <div class="col-6 mt-4">
+  <div class="col-8 mt-4">
+    <h4 class="text-light">Obstacle height:</h4>
+  </div>
+  <div class="col-4 mt-4">
+    <input [(ngModel)]="obstacleHeight" class="form-control" type="number">
+  </div>
+  <div class="col-8 mt-2">
+    <h4 class="text-light">Obstacle width:</h4>
+  </div>
+  <div class="col-4"><input [(ngModel)]="obstacleWidth" class="form-control mt-2" type="number"></div>
+  <div class="col-12 mt-2">
+    <button class="btn btn-light" (click)="createObstacle()">Create Obstacle</button>
+  </div>
+  <!-- <div class="col-6 mt-4">
           <h4 class="text-light">Anchor 1:</h4>
         </div>
         <div class="col-3"><input [(ngModel)]="x0" class="form-control mt-4" type="number"></div>
@@ -59,18 +43,8 @@
         <div class="col-3"><input [(ngModel)]="y2" class="form-control mt-2" type="number"></div>
         <div class="col-12 mt-2">
           <button class="btn btn-light" (click)="setAnchorPosition()">Set Anchor</button>
-        </div>
-        <div class="col-12 mt-2">
-          <button class="btn btn-success" (click)="findPath()">Find Path</button>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="col-6">  
-      <h1 class="text-light text-uppercase mt-2">Remote Controller</h1>
-      <app-movement></app-movement>
-    </div>
-
+        </div> -->
+  <div class="col-12 mt-2">
+    <button class="btn btn-success" (click)="findPath()">Find Path</button>
   </div>
 </div>

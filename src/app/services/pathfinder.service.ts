@@ -64,14 +64,6 @@ export class PathfinderService {
     });
   }
 
-  async getAnchorParameters() {
-    // setInterval(async () => {
-    //   await this.socketService.send("anchorParameters", { id: "5C2F" });
-    //   await this.socketService.send("anchorParameters", { id: "0F8C" });
-    //   await this.socketService.send("anchorParameters", { id: "8182" });
-    // }, 100);
-  }
-
   async setAnchorPosition(x0: number, x1: number, x2: number, y0: number, y1: number, y2: number) {
     await this.socketService.send("anchorPositionUpdate", { id: "5C2F", x: x0, y: y0 });
     await this.socketService.send("anchorPositionUpdate", { id: "0F8C", x: x1, y: y1 });

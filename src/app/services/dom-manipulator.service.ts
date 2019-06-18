@@ -20,21 +20,15 @@ export class DomManipulatorService {
     $(":root").css("--mapHeight", this.height + "px");
   }
 
-  createObstacle(width, height) {
+  /* createObstacle(width, height) {
     let mousePosition;
     let offset = [0, 0];
     let isDown = false;
 
     const div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.left = "0px";
-    div.style.top = "0px";
-    div.style.borderRadius = "5px";
     div.style.width = width + "px";
     div.style.height = height + "px";
-    div.style.background = "#3f3f3f";
     div.className = "obstacle";
-    div.id = "obstacle";
     this.obstacleNumber++;
     div.ondblclick = deleteObstacle;
     function deleteObstacle() {
@@ -62,13 +56,17 @@ export class DomManipulatorService {
           x: event.clientX,
           y: event.clientY
         };
-        div.style.left = (mousePosition.x + offset[0]) + 'px';
-        div.style.top = (mousePosition.y + offset[1]) + 'px';
+        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
+          div.style.left = (mousePosition.x + offset[0]) + 'px';
+        }
+        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
+          div.style.top = (mousePosition.y + offset[1]) + 'px';
+        }
       }
     }, true);
-  }
+  } */
 
-  createStartPoint() {
+  /* createStartPoint() {
     let mousePosition;
     let offset = [0, 0];
     let div;
@@ -102,23 +100,38 @@ export class DomManipulatorService {
           y: event.clientY
 
         };
-        div.style.left = (mousePosition.x + offset[0]) + 'px';
-        div.style.top = (mousePosition.y + offset[1]) + 'px';
+        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
+          div.style.left = (mousePosition.x + offset[0]) + 'px';
+        }
+        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
+          div.style.top = (mousePosition.y + offset[1]) + 'px';
+        }
       }
     }, true);
-  }
+  } */
 
-  createTargetPoint() {
+  createObject(name, width?, height?) {
     let mousePosition;
     let offset = [0, 0];
     let div;
     let isDown = false;
 
     div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.right = "10px";
-    div.style.top = "10px";
-    div.id = "target";
+    div.className = name;
+    div.id = name;
+
+    // for obstacle only
+    if (name === "obstacle") {
+      div.style.width = width + "px";
+      div.style.height = height + "px";
+      this.obstacleNumber++;
+      div.ondblclick = deleteObstacle;
+    }
+    function deleteObstacle() {
+      this.remove();
+    }
+    // obstacle end
+
     const map = document.getElementById("map");
     map.appendChild(div);
 
@@ -143,8 +156,12 @@ export class DomManipulatorService {
           y: event.clientY
 
         };
-        div.style.left = (mousePosition.x + offset[0]) + 'px';
-        div.style.top = (mousePosition.y + offset[1]) + 'px';
+        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
+          div.style.left = (mousePosition.x + offset[0]) + 'px';
+        }
+        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
+          div.style.top = (mousePosition.y + offset[1]) + 'px';
+        }
       }
     }, true);
   }

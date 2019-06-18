@@ -34,6 +34,8 @@ input {
   background-image: url("../../assets/images/flag.svg");
   background-position: cover;
   background-size: 100% 100%;
+  top: 10px;
+  right: 10px;
   height: 40px;
   width: 40px;
   position: absolute;
@@ -74,7 +76,7 @@ input {
 
 .tri {
   height: 10px;
-  width:10px;
+  width: 10px;
   position: absolute;
   border: solid 2px rgb(0, 132, 255);
   border-radius: 50%;
@@ -82,4 +84,11 @@ input {
   transition: all ease-in-out 0.2s;
 }
 
-
+.obstacle {
+  border-radius: 5px;
+  background: rgb(206, 206, 206);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border: solid rgb(0, 0, 0) 2px;
+}

@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { PathfinderComponent } from './pathfinder/pathfinder.component';
 import { SocketService } from './services/socket.service';
 import { MovementComponent } from './movement/movement.component';
+import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PathfinderComponent,
-    MovementComponent
+    MovementComponent,
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
