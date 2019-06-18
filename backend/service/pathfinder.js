@@ -38,6 +38,8 @@ function getUnwalkable(obstacleParameter, elementSize, clearance) {
 }
 
 function setUnwalkables(unwalkables, width, height, elementSize) {
+  width = Math.ceil(width / elementSize) * elementSize;
+  height = Math.ceil(height / elementSize) * elementSize;
   let grid = new PF.Grid(width / elementSize, height / elementSize);
   return new Promise((resolve) => {
     for (let i = 0; i < unwalkables.length; i++) {
