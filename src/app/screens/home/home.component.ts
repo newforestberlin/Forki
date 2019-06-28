@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketListenerService } from '../services/socket-listener.service';
+import { SocketListenerService } from '../../services/socket-listener.service';
 
 @Component({
   selector: 'app-home',

@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PathfinderComponent } from './pathfinder/pathfinder.component';
+import { PathfinderComponent } from './components/pathfinder/pathfinder.component';
 import { SocketService } from './services/socket.service';
-import { MovementComponent } from './movement/movement.component';
-import { MapComponent } from './map/map.component';
-import { HomeComponent } from './home/home.component';
+import { MovementComponent } from './components/movement/movement.component';
+import { MapComponent } from './components/map/map.component';
+import { HomeComponent } from './screens/home/home.component';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from '../services/socket.service';
+import { SocketService } from '../../services/socket.service';
 
 @Component({
   selector: 'app-movement',
@@ -15,12 +15,16 @@ export class MovementComponent implements OnInit {
     this.socketService.initSocket();
   }
 
+  public start() {
+    this.send = setInterval(() => this.setDirection("forwards"), 100);
+  }
+
   public mouseUp() {
     clearInterval(this.send);
   }
 
   public mouseDown(direction) {
-    console.log(direction)
+    console.log(direction);
     this.send = setInterval(() => this.setDirection(direction), 100);
   }
 

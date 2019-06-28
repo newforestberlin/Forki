@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DomManipulatorService } from '../services/dom-manipulator.service';
-import { PathfinderService } from '../services/pathfinder.service';
+import { DomManipulatorService } from '../../services/dom-manipulator.service';
+import { PathfinderService } from '../../services/pathfinder.service';
 
 @Component({
   selector: 'app-map',
