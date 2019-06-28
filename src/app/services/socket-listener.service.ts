@@ -17,7 +17,7 @@ export class SocketListenerService {
     this.socketService.initSocket();
     this.socketService.onMessage("getPath")
       .subscribe((path: any) => {
-        this.pathfinderService.visualizePath(path);
+        this.domManipulator.visualizePath(path, this.pathfinderService.elementSize);
       });
 
     this.socketService.onMessage("getAnchorParameters")

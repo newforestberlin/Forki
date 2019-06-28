@@ -243,4 +243,18 @@ export class DomManipulatorService {
       }
     }
   }
+
+  visualizePath(path, elementSize) {
+    let pathString = "M ";
+    for (let i = 0; i < path.length; i++) {
+      if (i === 1) {
+        pathString += "S " + path[i][0] * elementSize + " " + path[i][1] * elementSize + ","
+      } else {
+        pathString += path[i][0] * elementSize + " " + path[i][1] * elementSize + ","
+      }
+    }
+    pathString = pathString.slice(0, -1);
+    console.log(pathString);
+    $("#path").attr("d", pathString);
+  }
 }

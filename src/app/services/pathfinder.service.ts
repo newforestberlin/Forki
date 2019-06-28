@@ -19,7 +19,7 @@ export class PathfinderService {
     await this.setRobotPosition();
     await this.setObstacleParameters();
     const data = { id: 1, width: this.domService.width, height: this.domService.height, elementSize: this.elementSize, clearance: this.clearance }
-    const path = await this.socketService.send("getPath", data);
+    this.socketService.send("getPath", data);
   }
 
   setTargetPosition() {
@@ -68,20 +68,6 @@ export class PathfinderService {
     await this.socketService.send("anchorPositionUpdate", { id: "5C2F", x: x0, y: y0 });
     await this.socketService.send("anchorPositionUpdate", { id: "0F8C", x: x1, y: y1 });
     this.socketService.send("anchorPositionUpdate", { id: "8182", x: x2, y: y2 });
-  }
-
-  async visualizePath(path) {
-    let pathString = "M ";
-    for (let i = 0; i < path.length; i++) {
-      if (i === 1) {
-        pathString += "S " + path[i][0] * this.elementSize + " " + path[i][1] * this.elementSize + ","
-      } else {
-        pathString += path[i][0] * this.elementSize + " " + path[i][1] * this.elementSize + ","
-      }
-    }
-    pathString = pathString.slice(0, -1);
-    console.log(pathString);
-    $("#path").attr("d", pathString);
   }
 }
 
