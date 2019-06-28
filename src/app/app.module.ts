@@ -10,6 +10,7 @@ import { SocketService } from './services/socket.service';
 import { MovementComponent } from './components/movement/movement.component';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './screens/home/home.component';
+import { RadarComponent } from './components/radar/radar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './screens/home/home.component';
     PathfinderComponent,
     MovementComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    RadarComponent
   ],
   imports: [
     BrowserModule,

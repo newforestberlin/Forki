@@ -1,0 +1,75 @@
+.radar {
+  width: 600px;
+  height: 600px;
+  border: green 2px solid;
+  border-radius: 50%;
+  position: relative;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  background: green;
+}
+
+.dist-indicator-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  border-radius: 50%;
+  border: green 2px solid;
+}
+
+.dist-indicator-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 50%;
+  border: green 2px solid;
+}
+
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  animation: 2s pulse infinite;
+  transition: all 2s ease-in-out;
+  border: green 2px solid;
+}
+
+@keyframes pulse {
+  0% {
+    width: 0px;
+    height: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    background: rgba(0, 128, 0, 0)
+  }
+
+  100% {
+    width: 600px;
+    height: 600px;
+    margin-top: -300px;
+    margin-left: -300px;
+    background: rgba(0, 128, 0, 0.315)
+  }
+}
