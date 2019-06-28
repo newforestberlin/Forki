@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomManipulatorService } from 'src/app/services/dom-manipulator.service';
 
 @Component({
   selector: 'app-radar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RadarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public domService: DomManipulatorService) { }
 
   ngOnInit() {
   }

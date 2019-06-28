@@ -1,7 +1,10 @@
 <div class="radar">
-  <div class="middle"></div>
+  <div class="robot-radar"></div>
   <div class="pulse"></div>
   <div class="pulse2"></div>
   <div class="dist-indicator-1"></div>
   <div class="dist-indicator-2"></div>
+  <div class="obstacle-radar"></div>
+  <div id='sweep'></div>
 </div>
+<button (click)="this.domService.rotateSweep(45)" class="btn btn-light">Rotate 45 deg</button>

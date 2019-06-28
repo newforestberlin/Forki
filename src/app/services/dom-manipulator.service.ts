@@ -10,6 +10,7 @@ export class DomManipulatorService {
   height = 600;
   scaleX = 1;
   scaleY = 1;
+  sweepRotation = 0;
   constructor() { }
 
 
@@ -256,5 +257,19 @@ export class DomManipulatorService {
     pathString = pathString.slice(0, -1);
     console.log(pathString);
     $("#path").attr("d", pathString);
+  }
+
+  rotateSweep(deg) {
+    this.sweepRotation += deg;
+    this.detectObstacleRadar();
+    $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
+  }
+
+  detectObstacleRadar() {
+    const sweepX = $("#sweep").position().left - $(".radar").width() / 2;
+    const sweepY = $("#sweep").position().top - - $(".radar").height() / 2;
+    //const alpha = Math.atan()
+
+
   }
 }
