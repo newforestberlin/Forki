@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 import { SocketService } from './socket.service';
-import { PathfinderService } from './pathfinder.service';
+import { PathfinderService } from './map.service';
 import { DomManipulatorService } from './dom-manipulator.service';
 
 @Injectable({
