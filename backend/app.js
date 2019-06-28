@@ -7,7 +7,7 @@ const socketRouting = require('./routes/routing');
 const socketMovement = require('./routes/movement');
 const socketLocalization = require('./routes/localization');
 const io = require('socket.io-client')
-const socket = io.connect('http://192.168.2.67:3000', {
+const socket = io.connect('http://192.168.2.72:3000', {
   reconnection: true
 });
 require('dotenv').config()
