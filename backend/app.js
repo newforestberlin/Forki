@@ -4,6 +4,7 @@ const ioListener = require('socket.io')(http);
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const socketRouting = require('./routes/routing');
+const socketSonar = require('./routes/sonar');
 const socketMovement = require('./routes/movement');
 const socketLocalization = require('./routes/localization');
 const io = require('socket.io-client')
@@ -19,6 +20,7 @@ ioListener.on('connection', (socket) => {
   console.log('user connected');
   socketLocalization.sockets(socket, ioListener);
   socketRouting.sockets(socket, ioListener);
+  socketSonar.sockets(socket, ioListener);
   socketMovement.sockets(socket, io);
   socket.on('disconnect', () => {
     console.log('user disconnected');
