@@ -255,19 +255,31 @@ export class DomManipulatorService {
       }
     }
     pathString = pathString.slice(0, -1);
-    console.log(pathString);
     $("#path").attr("d", pathString);
   }
 
-  rotateSweep(deg) {
+  /* rotateSweep(deg) {
     this.sweepRotation += deg;
-    this.detectObstacleSonar();
+    $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
+  } */
+
+  setSonarSweep(sonar) {
+    this.sweepRotation = sonar.deg;
+    this.setSonarDistPoint(sonar.dist, sonar.deg);
     $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
   }
 
-  detectObstacleSonar() {
-    const sweepX = $("#sweep").position().left - $(".sonar").width() / 2;
-    const sweepY = $("#sweep").position().top - - $(".sonar").height() / 2;
-    //const alpha = Math.atan()
+  setSonarDistPoint(dist, deg) {
+    const sonar = document.getElementById("sonar");
+    const sonarContainer = document.createElement("div");
+    sonarContainer.className = "sonar-container";
+    sonarContainer.style.transform = "rotate(" + this.sweepRotation + "deg)";
+    sonar.appendChild(sonarContainer);
+    const obstacle = document.createElement("div");
+    obstacle.className = "obstacle-sonar";
+    if (dist < 30) {
+      obstacle.style.top = 300 - dist * 10 + "px";
+      sonarContainer.appendChild(obstacle);
+    }
   }
 }
