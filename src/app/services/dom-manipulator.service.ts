@@ -261,15 +261,13 @@ export class DomManipulatorService {
 
   rotateSweep(deg) {
     this.sweepRotation += deg;
-    this.detectObstacleRadar();
+    this.detectObstacleSonar();
     $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
   }
 
-  detectObstacleRadar() {
-    const sweepX = $("#sweep").position().left - $(".radar").width() / 2;
-    const sweepY = $("#sweep").position().top - - $(".radar").height() / 2;
+  detectObstacleSonar() {
+    const sweepX = $("#sweep").position().left - $(".sonar").width() / 2;
+    const sweepY = $("#sweep").position().top - - $(".sonar").height() / 2;
     //const alpha = Math.atan()
-
-
   }
 }

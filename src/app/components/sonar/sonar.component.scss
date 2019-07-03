@@ -1,4 +1,4 @@
-.radar {
+.sonar {
   width: 600px;
   height: 600px;
   border: green 2px solid;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.robot-radar {
+.robot-sonar {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -82,7 +82,7 @@
   }
 }
 
-.obstacle-radar {
+.obstacle-sonar {
   position: absolute;
   top: 250px;
   left: 450px;
@@ -123,13 +123,52 @@
   transform-origin: 100% 100%;
   background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
   transition: all 1s ease-in-out;
-  // animation: sweep 5s infinite linear;
+  animation: sweep 5s infinite linear;
+  transform: rotate(270deg);
 }
 
-/*
+#sweep2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin-left: -300px;
+  margin-top: -300px;
+  border-right: solid 1px rgba(44, 207, 4, 0.3);
+  border-radius: 100% 0 0 0;
+  transform-origin: 100% 100%;
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
+  transition: all 1s ease-in-out;
+  animation: sweep2 5s infinite linear;
+  transform: rotate(450deg);
+}
+
 @keyframes sweep {
-  to {
-    transform: rotate(360deg);
+  0% {
+    transform: rotate(450deg);
+  }
+
+  50% {
+    transform: rotate(270deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
   }
 }
- */
+
+
+@keyframes sweep2 {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(270deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}

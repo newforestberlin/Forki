@@ -5,10 +5,10 @@
   const qsa = document.querySelectorAll.bind(document)
 
   // Cache DOM elements
-  let icons = qsa('#radar-icons path')
-  const radius = qs('#radar-radius')
-  const gradient = qs('#radar-gradient')
-  const hand = qs('#radar-hand')
+  let icons = qsa('#sonar-icons path')
+  const radius = qs('#sonar-radius')
+  const gradient = qs('#sonar-gradient')
+  const hand = qs('#sonar-hand')
 
   TweenMax.set(icons, {
     transformOrigin: 'center',

@@ -10,7 +10,7 @@ import { SocketService } from './services/socket.service';
 import { MovementComponent } from './components/movement/movement.component';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './screens/home/home.component';
-import { RadarComponent } from './components/radar/radar.component';
+import { SonarComponent } from './components/sonar/sonar.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +19,12 @@ import { RadarComponent } from './components/radar/radar.component';
     MovementComponent,
     MapComponent,
     HomeComponent,
-    RadarComponent
+    SonarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule
   ],
   providers: [
