@@ -11,6 +11,8 @@ import { MovementComponent } from './components/movement/movement.component';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './screens/home/home.component';
 import { SonarComponent } from './components/sonar/sonar.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SonarComponent } from './components/sonar/sonar.component';
     MovementComponent,
     MapComponent,
     HomeComponent,
-    SonarComponent
+    SonarComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
