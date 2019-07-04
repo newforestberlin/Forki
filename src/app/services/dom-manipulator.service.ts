@@ -21,96 +21,6 @@ export class DomManipulatorService {
     $(":root").css("--mapHeight", this.height + "px");
   }
 
-  /* createObstacle(width, height) {
-    let mousePosition;
-    let offset = [0, 0];
-    let isDown = false;
-
-    const div = document.createElement("div");
-    div.style.width = width + "px";
-    div.style.height = height + "px";
-    div.className = "obstacle";
-    this.obstacleNumber++;
-    div.ondblclick = deleteObstacle;
-    function deleteObstacle() {
-      this.remove();
-    }
-    const map = document.getElementById("map");
-    map.appendChild(div);
-
-    div.addEventListener('mousedown', (e) => {
-      isDown = true;
-      offset = [
-        div.offsetLeft - e.clientX,
-        div.offsetTop - e.clientY
-      ];
-    }, true);
-
-    document.addEventListener('mouseup', () => {
-      isDown = false;
-    }, true);
-
-    document.addEventListener('mousemove', (event) => {
-      event.preventDefault();
-      if (isDown) {
-        mousePosition = {
-          x: event.clientX,
-          y: event.clientY
-        };
-        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
-          div.style.left = (mousePosition.x + offset[0]) + 'px';
-        }
-        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
-          div.style.top = (mousePosition.y + offset[1]) + 'px';
-        }
-      }
-    }, true);
-  } */
-
-  /* createStartPoint() {
-    let mousePosition;
-    let offset = [0, 0];
-    let div;
-    let isDown = false;
-    div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.left = "10px";
-    div.style.bottom = "10px";
-    div.id = "start";
-    const map = document.getElementById("map");
-    map.appendChild(div);
-
-    div.addEventListener('mousedown', (e) => {
-      isDown = true;
-      offset = [
-        div.offsetLeft - e.clientX,
-        div.offsetTop - e.clientY
-      ];
-    }, true);
-
-    document.addEventListener('mouseup', () => {
-      isDown = false;
-    }, true);
-
-    document.addEventListener('mousemove', (event) => {
-      event.preventDefault();
-      if (isDown) {
-        mousePosition = {
-
-          x: event.clientX,
-          y: event.clientY
-
-        };
-        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
-          div.style.left = (mousePosition.x + offset[0]) + 'px';
-        }
-        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
-          div.style.top = (mousePosition.y + offset[1]) + 'px';
-        }
-      }
-    }, true);
-  } */
-
   createObject(name, width?, height?) {
     let mousePosition;
     let offset = [0, 0];
@@ -258,15 +168,15 @@ export class DomManipulatorService {
     $("#path").attr("d", pathString);
   }
 
-  /* rotateSweep(deg) {
-    this.sweepRotation += deg;
-    $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
-  } */
-
-  setSonarSweep(sonar) {
+  setSonarSweep(sonar, position) {
     this.sweepRotation = sonar.deg;
-    this.setSonarDistPoint(sonar.dist, sonar.deg);
-    $("#sweep").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
+    if (position === "front") {
+      this.setSonarDistPoint(sonar.dist, sonar.deg);
+      $("#sweep-front").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
+    } else if (position === "back") {
+      this.setSonarDistPoint(sonar.dist, sonar.deg);
+      $("#sweep-back").css({ 'transform': 'rotate(' + this.sweepRotation + 'deg)' });
+    }
   }
 
   setSonarDistPoint(dist, deg) {

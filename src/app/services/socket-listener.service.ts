@@ -31,7 +31,8 @@ export class SocketListenerService {
     });
 
     this.socketService.onMessage("getSonarParameter").subscribe(sonar => {
-      this.domManipulator.setSonarSweep(sonar.sonar.back);
+      this.domManipulator.setSonarSweep(sonar.sonar.back, "back");
+      this.domManipulator.setSonarSweep(sonar.sonar.front, "front");
     });
 
     // DWM1001 calculated robot Position

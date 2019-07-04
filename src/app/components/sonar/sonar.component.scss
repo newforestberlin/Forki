@@ -83,7 +83,7 @@
 }
 
 
-#sweep {
+#sweep-front {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -97,10 +97,9 @@
   background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
   transition: all 0.2s linear;
   // animation: sweep 5s infinite linear;
-  transform: rotate(270deg);
 }
 
-#sweep2 {
+#sweep-back {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -112,8 +111,8 @@
   border-radius: 100% 0 0 0;
   transform-origin: 100% 100%;
   background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
-  transition: all 1s ease-in-out;
-  // animation: sweep2 5s infinite linear;
+  transition: all 0.2s linear;
+  // animation: sweep 5s infinite linear;
 }
 
 @keyframes sweep {
