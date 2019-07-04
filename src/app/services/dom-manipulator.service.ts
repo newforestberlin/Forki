@@ -197,8 +197,10 @@ export class DomManipulatorService {
 
   reduceElementStack(className) {
     const elements = document.getElementsByClassName(className);
-    for (let i = 0; elements.length > 9; i++) {
-      elements[i].remove();
+    if (elements) {
+      for (let i = 0; elements.length > 9; i++) {
+        elements[i].remove();
+      }
     }
   }
 }
