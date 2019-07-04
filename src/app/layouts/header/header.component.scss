@@ -1,5 +1,10 @@
 header {
-  background: var(--main-color);
+  background: var(--header-color);
+}
+
+header>.container>.row>div>h1 {
+  font-size: 60px;
+  color: rgb(18, 240, 192)
 }
 
 h1>a {

@@ -8,20 +8,16 @@ button {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: var(--main-color);
+  background: var(--remote-color);
 }
 
 .row {
   position: relative;
-  margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: 3px;
   width: 500px;
-  border: solid var(--main-color) 2px;
-  background: rgb(19, 19, 19);
-}
-
-.bg {
-  height: 100vh;
-  background: rgb(14, 14, 14);
+  height: 223px;
+  border: solid var(--remote-color) 2px;
+  background: var(--remote-background-color);
 }

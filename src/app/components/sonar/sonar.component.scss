@@ -1,10 +1,10 @@
 .sonar {
   width: 600px;
   height: 600px;
-  border: green 2px solid;
+  border: var(--sonar-color) 2px solid;
   border-radius: 50%;
   position: relative;
-  background: rgb(19, 19, 19);
+  background: var(ç);
 }
 
 .robot-sonar {
@@ -16,7 +16,7 @@
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 50%;
-  background: green;
+  background: var(--sonar-color);
 }
 
 .dist-indicator-1 {
@@ -28,7 +28,7 @@
   margin-top: -100px;
   margin-left: -100px;
   border-radius: 50%;
-  border: green 2px solid;
+  border: var(--sonar-color) 2px solid;
 }
 
 .dist-indicator-2 {
@@ -40,7 +40,7 @@
   margin-top: -200px;
   margin-left: -200px;
   border-radius: 50%;
-  border: green 2px solid;
+  border: var(--sonar-color) 2px solid;
 }
 
 .pulse {
@@ -54,7 +54,7 @@
   border-radius: 50%;
   animation: 2s pulse infinite;
   transition: all 2s ease-in-out;
-  border: green 2px solid;
+  border: var(--sonar-color) 2px solid;
 }
 
 @keyframes pulse {
@@ -71,7 +71,7 @@
     height: 600px;
     margin-top: -300px;
     margin-left: -300px;
-    background: rgba(0, 128, 0, 0.315)
+    background: var(--sonar-color-transparent);
   }
 
   100% {
@@ -92,10 +92,10 @@
   height: 300px;
   margin-left: -300px;
   margin-top: -300px;
-  border-right: solid 1px rgba(44, 207, 4, 0.3);
+  border-right: solid 1px var(--sonar-color-transparent);
   border-radius: 100% 0 0 0;
   transform-origin: 100% 100%;
-  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--sonar-color));
   transition: all 0.2s linear;
   // animation: sweep 5s infinite linear;
 }
@@ -108,10 +108,10 @@
   height: 300px;
   margin-left: -300px;
   margin-top: -300px;
-  border-right: solid 1px rgba(44, 207, 4, 0.3);
+  border-right: solid 1px var(--sonar-color-transparent);
   border-radius: 100% 0 0 0;
   transform-origin: 100% 100%;
-  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--sonar-color-transparent));
   transition: all 0.2s linear;
   transform: rotate(180deg);
   // animation: sweep 5s infinite linear;
@@ -144,4 +144,41 @@
   100% {
     transform: rotate(90deg);
   }
+}
+
+.obstacle-sonar {
+  position: absolute;
+  top: 30px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  background: rgb(216, 11, 11);
+  transition: all 0.3s linear;
+  animation: 1.5s fade;
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.sonar-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin-left: -300px;
+  margin-top: -300px;
+  border-radius: 100% 0 0 0;
+  transform-origin: 100% 100%;
 }

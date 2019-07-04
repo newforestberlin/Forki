@@ -181,14 +181,14 @@ export class DomManipulatorService {
   }
 
   setSonarDistPoint(dist, deg) {
-    const sonar = document.getElementById("sonar");
-    const sonarContainer = document.createElement("div");
-    sonarContainer.className = "sonar-container";
-    sonarContainer.style.transform = "rotate(" + this.sweepRotation + "deg)";
-    sonar.appendChild(sonarContainer);
-    const sonarDistPoint = document.createElement("div");
-    sonarDistPoint.className = "obstacle-sonar";
     if (dist < 30) {
+      const sonar = document.getElementById("sonar");
+      const sonarContainer = document.createElement("div");
+      sonarContainer.className = "sonar-container";
+      sonarContainer.style.transform = "rotate(" + this.sweepRotation + "deg)";
+      sonar.appendChild(sonarContainer);
+      const sonarDistPoint = document.createElement("div");
+      sonarDistPoint.className = "obstacle-sonar";
       sonarDistPoint.style.top = 300 - dist * 10 + "px";
       sonarContainer.appendChild(sonarDistPoint);
       this.reduceElementStack("sonar-container");

@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomManipulatorService } from '../../services/dom-manipulator.service';
-import { ViewEncapsulation } from '@angular/core';
 import { PathfinderService } from '../../services/map.service';
 
 @Component({
   selector: 'app-map-controller',
   templateUrl: './map-controller.component.html',
-  styleUrls: ['./map-controller.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./map-controller.component.scss']
 })
 export class MapControllerComponent implements OnInit {
   path;
