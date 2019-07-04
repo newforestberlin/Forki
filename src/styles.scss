@@ -4,6 +4,10 @@ body {
   background: rgb(19, 19, 19);
 }
 
+:root {
+  --main-color: #dc3545;
+}
+
 .obstacle-sonar {
   position: absolute;
   top: 30px;
