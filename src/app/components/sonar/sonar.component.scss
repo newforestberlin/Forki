@@ -112,6 +112,7 @@
   transform-origin: 100% 100%;
   background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, rgb(54, 180, 23));
   transition: all 0.2s linear;
+  transform: rotate(180deg);
   // animation: sweep 5s infinite linear;
 }
 

@@ -143,12 +143,13 @@ export class DomManipulatorService {
         const tri = document.getElementById("tri");
         tri.style.left = pos.x - 20 + "px";
         tri.style.top = pos.y - 20 + "px";
-
         let div = document.createElement("div");
         div.style.position = "absolute";
         div.style.left = pos.x + "px";
         div.style.top = pos.y + "px";
         div.className = "tri";
+
+        this.reduceElementStack("tri");
         const map = document.getElementById("map");
         map.appendChild(div);
       }
@@ -185,11 +186,19 @@ export class DomManipulatorService {
     sonarContainer.className = "sonar-container";
     sonarContainer.style.transform = "rotate(" + this.sweepRotation + "deg)";
     sonar.appendChild(sonarContainer);
-    const obstacle = document.createElement("div");
-    obstacle.className = "obstacle-sonar";
+    const sonarDistPoint = document.createElement("div");
+    sonarDistPoint.className = "obstacle-sonar";
     if (dist < 30) {
-      obstacle.style.top = 300 - dist * 10 + "px";
-      sonarContainer.appendChild(obstacle);
+      sonarDistPoint.style.top = 300 - dist * 10 + "px";
+      sonarContainer.appendChild(sonarDistPoint);
+      this.reduceElementStack("obstacle-sonar");
+    }
+  }
+
+  reduceElementStack(className) {
+    const elements = document.getElementsByClassName(className);
+    for (let i = 0; elements.length > 9; i++) {
+      elements[i].remove();
     }
   }
 }
