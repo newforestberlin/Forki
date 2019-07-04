@@ -4,10 +4,13 @@ header {
 
 header>.container>.row>div>h1 {
   font-size: 60px;
-  color: rgb(18, 240, 192)
 }
 
 h1>a {
   text-decoration: none;
   cursor: pointer;
+}
+
+h1>span {
+  color: var(--remote-color)
 }

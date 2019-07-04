@@ -4,7 +4,8 @@
   border: var(--sonar-color) 2px solid;
   border-radius: 50%;
   position: relative;
-  background: var(ç);
+  background: var(--sonar-background-color);
+  overflow: hidden;
 }
 
 .robot-sonar {
