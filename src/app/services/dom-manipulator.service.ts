@@ -191,7 +191,7 @@ export class DomManipulatorService {
     if (dist < 30) {
       sonarDistPoint.style.top = 300 - dist * 10 + "px";
       sonarContainer.appendChild(sonarDistPoint);
-      this.reduceElementStack("obstacle-sonar");
+      this.reduceElementStack("sonar-container");
     }
   }
 
