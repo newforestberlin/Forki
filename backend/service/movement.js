@@ -1,24 +1,24 @@
-exports.directionConverter = (command) => {
+exports.directionValidator = (command) => {
   return new Promise((resolve) => {
     try {
       switch (command.direction) {
         case "forwards":
-          resolve([1, 0, 1, 0]);
+          resolve(true);
           break;
         case "backwards":
-          resolve([0, 1, 0, 1]);
+          resolve(true);
           break;
         case "left":
-          resolve([0, 0, 1, 1]);
+          resolve(true);
           break;
         case "right":
-          resolve([1, 1, 0, 0]);
+          resolve(true);
           break;
         case "turn right":
-          resolve([1, 1, 1, 1]);
+          resolve(true);
           break;
         case "turn left":
-          resolve([0, 0, 0, 0]);
+          resolve(true);
           break;
       }
     } finally {

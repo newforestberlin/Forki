@@ -4,12 +4,12 @@ const piSocket = io.connect('http://192.168.2.72:3000');
 
 exports.sockets = (socket) => {
   socket.on('setMovement', async command => {
-    command.direction = await MovementController.directionConverter(command)
-    if (command.direction === false) {
+    if (await MovementController.directionValidator(command) === false) {
       console.log("wrong command");
       return;
+    } else {
+      piSocket.emit('setMovement',
+        command);
     }
-    piSocket.emit('setMovement',
-      command);
   });
 }
