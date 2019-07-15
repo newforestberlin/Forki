@@ -1,6 +1,6 @@
 const MovementController = require("../controller/movement");
 const io = require('socket.io-client')
-const piSocket = io.connect('http://192.168.2.72:3000');
+const piSocket = io.connect('http://192.168.2.67:3000');
 
 exports.sockets = (socket) => {
   socket.on('setMovement', async command => {
