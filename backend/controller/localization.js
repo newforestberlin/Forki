@@ -18,11 +18,13 @@ exports.setAnchorDistance = (data) => {
 
 exports.setAnchorPosition = (data) => {
   return new Promise((resolve) => {
-    database.anchorPositionUpdate(data.data.id, data.data).then(msg => {
-      resolve(msg);
-    }).catch(err => {
-      resolve(err);
-    });
+    if (data.data) {
+      database.anchorPositionUpdate(data.data.id, data.data).then(msg => {
+        resolve(msg);
+      }).catch(err => {
+        resolve(err);
+      });
+    }
   });
 }
 
