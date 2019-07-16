@@ -126,35 +126,35 @@ export class DomManipulatorService {
   }
 
   setTrilaterationPoint(pos) {
-    // pos = JSON.parse(pos);
     if (!isNaN(pos.x) && pos.x != null) {
       pos.x *= this.height / this.scaleY;
       pos.y *= this.height / this.scaleY;
-      if (!document.getElementById("tri")) {
-        let div = document.createElement("div");
-        div.style.position = "absolute";
-        div.style.left = pos.x - 20 + "px";
-        div.style.top = pos.y - 20 + "px";
-        div.className = "robot";
-        div.id = "tri";
-        const map = document.getElementById("map");
-        map.appendChild(div);
-      } else {
-        const tri = document.getElementById("tri");
-        tri.style.left = pos.x - 20 + "px";
-        tri.style.top = pos.y - 20 + "px";
-        let div = document.createElement("div");
-        div.style.position = "absolute";
-        div.style.left = pos.x + "px";
-        div.style.top = pos.y + "px";
-        div.className = "tri";
-
-        this.reduceElementStack("tri");
-        const map = document.getElementById("map");
-        map.appendChild(div);
-      }
+      const div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.left = pos.x + "px";
+      div.style.top = pos.y + "px";
+      div.className = "tri";
+      this.reduceElementStack("tri");
+      const map = document.getElementById("map");
+      map.appendChild(div);
     }
   }
+
+  setTrilaterationPoint2(pos) {
+    if (!isNaN(pos.x) && pos.x != null) {
+      pos.x *= this.height / this.scaleY;
+      pos.y *= this.height / this.scaleY;
+      const div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.left = pos.x + "px";
+      div.style.top = pos.y + "px";
+      div.className = "tri2";
+      this.reduceElementStack("tri2");
+      const map = document.getElementById("map");
+      map.appendChild(div);
+    }
+  }
+
 
   visualizePath(path, elementSize) {
     let pathString = "M ";
@@ -198,7 +198,7 @@ export class DomManipulatorService {
   reduceElementStack(className) {
     const elements = document.getElementsByClassName(className);
     if (elements) {
-      for (let i = 0; elements.length > 9; i++) {
+      for (let i = 0; elements.length > 19; i++) {
         elements[i].remove();
       }
     }
