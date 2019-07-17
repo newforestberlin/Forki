@@ -6,8 +6,8 @@ import * as $ from 'jquery';
 })
 export class DomManipulatorService {
   obstacleNumber = 0;
-  width = 525;
-  height = 600;
+  width = 1980;
+  height = 1280;
   scaleX = 1;
   scaleY = 1;
   sweepRotation = 0;
