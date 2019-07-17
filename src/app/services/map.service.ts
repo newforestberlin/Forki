@@ -35,9 +35,9 @@ export class PathfinderService {
 
   setRobotPosition() {
     return new Promise(async (resolve) => {
-      const coordinate = $(".robot").position();
-      const width = $(".robot").width();
-      const height = $(".robot").height();
+      const coordinate = $(".tri").position();
+      const width = $(".tri").width();
+      const height = $(".tri").height();
       const data = { id: 1, x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
       await this.socketService.send("robotupdate", data);
       resolve(data);
