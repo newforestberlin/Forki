@@ -27,8 +27,7 @@ export class SocketListenerService {
       });
 
     this.socketService.onMessage("getDatabaseRobotPosition").subscribe(position => {
-      console.log(position)
-      this.domManipulator.setTrilaterationPoint(position.position);
+      this.domManipulator.setTrilaterationPoint(position.position, "tri");
     });
 
     /* this.socketService.onMessage("getSonarParameter").subscribe(sonar => {
@@ -38,7 +37,7 @@ export class SocketListenerService {
 
     // DWM1001 calculated robot Position
     this.socketService.onMessage("getRobotPosition").subscribe(position => {
-      this.domManipulator.setTrilaterationPoint2(position.position);
+      this.domManipulator.setTrilaterationPoint(position.position, "tri2");
     });
   }
 
@@ -47,10 +46,10 @@ export class SocketListenerService {
       let scaleX = Math.abs(anchorParameters[0].data.x - anchorParameters[1].data.x);
       let scaleY = Math.abs(anchorParameters[0].data.y - anchorParameters[1].data.y);
 
-      if (scaleX === 0) {
+      if (scaleX < 0.5) {
         scaleX = Math.abs(anchorParameters[0].data.x - anchorParameters[2].data.x);
       }
-      if (scaleY === 0) {
+      if (scaleY === 0.5) {
         scaleY = Math.abs(anchorParameters[0].data.y - anchorParameters[2].data.y);
       }
 

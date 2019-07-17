@@ -125,36 +125,22 @@ export class DomManipulatorService {
     map.appendChild(circle);
   }
 
-  setTrilaterationPoint(pos) {
-    if (!isNaN(pos.x) && pos.x != null) {
-      pos.x *= this.height / this.scaleY;
-      pos.y *= this.height / this.scaleY;
-      const div = document.createElement("div");
-      div.style.position = "absolute";
-      div.style.left = pos.x + "px";
-      div.style.top = pos.y + "px";
-      div.className = "tri";
-      this.reduceElementStack("tri");
-      const map = document.getElementById("map");
-      map.appendChild(div);
+  setTrilaterationPoint(pos, className) {
+    if (pos) {
+      if (!isNaN(pos.x) && pos.x != null) {
+        pos.x *= this.height / this.scaleY;
+        pos.y *= this.height / this.scaleY;
+        const div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.left = pos.x + "px";
+        div.style.top = pos.y + "px";
+        div.className = className;
+        this.reduceElementStack(className);
+        const map = document.getElementById("map");
+        map.appendChild(div);
+      }
     }
   }
-
-  setTrilaterationPoint2(pos) {
-    if (!isNaN(pos.x) && pos.x != null) {
-      pos.x *= this.height / this.scaleY;
-      pos.y *= this.height / this.scaleY;
-      const div = document.createElement("div");
-      div.style.position = "absolute";
-      div.style.left = pos.x + "px";
-      div.style.top = pos.y + "px";
-      div.className = "tri2";
-      this.reduceElementStack("tri2");
-      const map = document.getElementById("map");
-      map.appendChild(div);
-    }
-  }
-
 
   visualizePath(path, elementSize) {
     let pathString = "M ";
