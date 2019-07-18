@@ -1,27 +1,56 @@
-# ForkiRouting
+# Setup remote connection to the raspberry with vscode
+### Install rmate with this guide
+`https://medium.com/@prtdomingo/editing-files-in-your-linux-virtual-machine-made-a-lot-easier-with-remote-vscode-6bb98d0639a4`
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+### Connection refused error?
+`https://askubuntu.com/questions/218344/why-am-i-getting-a-port-22-connection-refused-error`
 
-## Development server
+### log into the raspberry and get the IP adress
+`ifconfig`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Connect to raspberry
+`ssh -R 52698:127.0.0.1:52698 pi@192.168.2.67`
+Replace the IP with the right one
 
-## Code scaffolding
+# Setup raspberry pi
+### Install redis
+`https://habilisbest.com/install-redis-on-your-raspberryp`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Install Node
+`https://www.instructables.com/id/Install-Nodejs-and-Npm-on-Raspberry-Pi/`
 
-## Build
+### Set up Node.js backend on the raspberry pi
+```
+git clone https://github.com/newforestberlin/Forki.git backend
+cd ./backend
+git checkout pi_backend
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Set up sensor scripts on the raspberry pi
+```
+git clone https://github.com/newforestberlin/Forki.git scripts 
+cd ./scripts 
+git checkout pi_scripts
+```
 
-## Running unit tests
+### Start scripts and Node.js on the raspberry pi
+`./run.sh`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Setup IoT-Platform with [docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
+```
+git clone https://github.com/newforestberlin/Forki.git forki-platform 
+docker-compose up
+```
 
-## Running end-to-end tests
+# Setup IoT-Platform on local machine
+```
+git clone https://github.com/newforestberlin/Forki.git forki-platform 
+cd ./forki-platform
+npm install
+npm start
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+cd ./backend
+npm install
+npm start
+```
