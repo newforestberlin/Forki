@@ -20,32 +20,32 @@ async function getRobotPositionRealtime(AN0, AN1, AN2) {
       }
     ];
     var pos = getTrilateration(beacons[0], beacons[1], beacons[2]);
+    var mean = await getMean(pos);
+    resolve(mean);
+  });
+}
+
+function getMean(pos) {
+  return new Promise(async (resolve) => {
     if (isFinite(pos.x)) {
       await database.setMovingAverage(0, pos.x, pos.y)
       const movingPositionsUpdated = await database.getMovingAverage(0)
-      try {
-        const reducer = (accumulator, currentValue) => {
-          return {
-            x: (accumulator.x + currentValue.x),
-            y: (accumulator.y + currentValue.y)
-          }
-        };
-        var mean = movingPositionsUpdated.data.reduce(reducer, {
-          x: 0.0,
-          y: 0.0
-        });
-        mean.x /= movingPositionsUpdated.data.length;
-        mean.y /= movingPositionsUpdated.data.length;
-      } finally {
-        // console.log("Error")
-      }
-      pos.x = mean.x
-      pos.y = mean.y
+      const reducer = (accumulator, currentValue) => {
+        return {
+          x: (accumulator.x + currentValue.x),
+          y: (accumulator.y + currentValue.y)
+        }
+      };
+      var mean = movingPositionsUpdated.data.reduce(reducer, {
+        x: 0.0,
+        y: 0.0
+      });
+      mean.x /= movingPositionsUpdated.data.length;
+      mean.y /= movingPositionsUpdated.data.length;
+      resolve(mean)
     } else {
-      console.log("Can't calculate trilateration")
+      resolve(false)
     }
-    console.log(mean);
-    resolve(mean);
   });
 }
 
