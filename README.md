@@ -2,7 +2,7 @@
 ### Install rmate with this guide
 `https://medium.com/@prtdomingo/editing-files-in-your-linux-virtual-machine-made-a-lot-easier-with-remote-vscode-6bb98d0639a4`
 
-### Connection refused error?
+### If connection refused error
 `https://askubuntu.com/questions/218344/why-am-i-getting-a-port-22-connection-refused-error`
 
 ### log into the raspberry and get the IP adress
@@ -37,7 +37,7 @@ git checkout pi_scripts
 ### Start scripts and Node.js on the raspberry pi
 `./run.sh`
 
-# Setup IoT-Platform with [docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
+# Setup IoT-Platform with [Docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
 ```
 git clone https://github.com/newforestberlin/Forki.git forki-platform 
 docker-compose up
