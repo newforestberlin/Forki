@@ -82,7 +82,7 @@ input {
   border: solid 2px var(--tri-color);
   border-radius: 50%;
   background: rgba(0, 162, 255, 0.205);
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.6s;
 }
 
 .tri2 {
@@ -91,7 +91,7 @@ input {
   position: absolute;
   border-radius: 50%;
   background: var(--tri2-color);
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.6s;
   animation: 1s fade
 }
 
