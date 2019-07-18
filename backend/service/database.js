@@ -132,8 +132,8 @@ async function setMovingAverage(id, x, y) {
 
   function dropData(moving) {
     return new Promise((resolve) => {
-      if (moving.data.length >= 40) {
-        while (moving.data.length > 40) {
+      if (moving.data.length >= 15) {
+        while (moving.data.length > 15) {
           moving.data.pop();
         }
       }
