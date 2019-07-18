@@ -1,0 +1,30 @@
+version: "3"
+services:
+  frontend:
+    build: .
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/src
+    restart: always
+    command: npm start
+    depends_on:
+      - backend
+      - mongodb
+  backend:
+    build: ./backend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/src
+      - /src/node_modules/
+    command: npm start
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_DB: "mongodb://mongodb/forki"
+  mongodb:
+    image: mongo:4.1.7
+    ports:
+      - "27017:27017"
