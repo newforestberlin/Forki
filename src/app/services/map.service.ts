@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import { HttpClient } from "@angular/common/http";
 import { SocketService } from './socket.service';
 import { DomManipulatorService } from './dom-manipulator.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -65,9 +66,9 @@ export class PathfinderService {
   }
 
   async setAnchorPosition(x0: number, x1: number, x2: number, y0: number, y1: number, y2: number) {
-    await this.socketService.send("anchorPositionUpdate", { id: "5C2F", x: x0, y: y0 });
-    await this.socketService.send("anchorPositionUpdate", { id: "0F8C", x: x1, y: y1 });
-    this.socketService.send("anchorPositionUpdate", { id: "8182", x: x2, y: y2 });
+    await this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x0, y: y0 });
+    await this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x1, y: y1 });
+    this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x2, y: y2 });
   }
 }
 

@@ -1,5 +1,6 @@
 var database = require("../service/database");
 var trilateration = require("../service/trilateration");
+require('dotenv').config()
 
 exports.getAnchorParameters = async (data) => {
   const id = data.id;
@@ -30,9 +31,9 @@ exports.setAnchorPosition = (data) => {
 
 exports.getRobotPositionRealtime = async () => {
   return new Promise(async (resolve) => {
-    const AN0 = await database.getAnchorParameters("5C2F");
-    const AN1 = await database.getAnchorParameters("0F8C");
-    const AN2 = await database.getAnchorParameters("8182");
+    const AN0 = await database.getAnchorParameters(process.env.AN0);
+    const AN1 = await database.getAnchorParameters(process.env.AN1);
+    const AN2 = await database.getAnchorParameters(process.env.AN2);
     if (AN0 && AN1 && AN2) {
       resolve(await trilateration.getRobotPositionRealtime(AN0, AN1, AN2));
     } else resolve();
