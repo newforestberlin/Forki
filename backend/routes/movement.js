@@ -1,6 +1,7 @@
 const MovementController = require("../controller/movement");
 const io = require('socket.io-client')
-const piSocket = io.connect('http://192.168.2.67:3000');
+require('dotenv').config()
+const piSocket = io.connect(process.env.RASPBERRY_BACKEND_URL);
 
 exports.sockets = (socket) => {
   socket.on('setMovement', async command => {

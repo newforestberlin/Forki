@@ -8,11 +8,10 @@ const socketSonar = require('./routes/sonar');
 const socketMovement = require('./routes/movement');
 const socketLocalization = require('./routes/localization');
 const io = require('socket.io-client')
-const socket = io.connect('http://192.168.2.67:3000', {
+require('dotenv').config()
+const socket = io.connect(process.env.RASPBERRY_BACKEND_URL, {
   reconnection: true
 });
-require('dotenv').config()
-
 
 mongoose.connect(process.env.MONGO_DB);
 
