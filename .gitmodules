@@ -1,0 +1,14 @@
+[submodule "landing_page"]
+	path = landing_page
+	url = https://github.com/newforestberlin/Forki.git
+	branch = landing_page
+
+[submodule "raspberry_pi/backend"]
+	path = raspberry_pi/backend
+	url = https://github.com/newforestberlin/Forki.git
+	branch = pi_backend
+
+[submodule "raspberry_pi/scripts"]
+	path = raspberry_pi/scripts
+	url = https://github.com/newforestberlin/Forki.git
+	branch = pi_scripts
