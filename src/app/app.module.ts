@@ -13,6 +13,7 @@ import { SonarComponent } from './components/sonar/sonar.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { MapControllerComponent } from './components/map-controller/map-controller.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MapControllerComponent } from './components/map-controller/map-controll
     SonarComponent,
     HeaderComponent,
     FooterComponent,
-    MapControllerComponent
+    MapControllerComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
