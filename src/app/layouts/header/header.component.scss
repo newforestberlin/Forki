@@ -1,16 +1,23 @@
 header {
   background: var(--header-color);
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.158);
 }
 
 header>.container>.row>div>h1 {
-  font-size: 60px;
+  font-size: 52px;
 }
 
-h1>a {
+h2>a {
   text-decoration: none;
+  color: var(--font-color);
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+h2>a:hover {
+  color: var(--highlight);
 }
 
 h1>span {
-  color: var(--remote-color)
+  color: var(--highlight)
 }

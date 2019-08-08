@@ -1,11 +1,12 @@
 .row {
-  background: var(--map-controller-bg-color);
-  border: solid 2px var(--map-controller-color);
+  background: var(--component-background);
+  border: solid 3px var(--highlight-2);
+  border-radius: 5px;
   margin-right: 10px;
   height: 223px;
   margin-left: 3px;
 }
 
 button {
-  background: var(--map-controller-color);
+  background: var(--highlight-2);
 }

@@ -3,25 +3,24 @@
 
 
 :root {
-  --header-color: rgba(0, 0, 0, 0.425);
+  --header-color: rgba(255, 255, 255, 0.425);
   --anchor-color: #da40dac5;
   --anchor-radius-color: #7535dc88;
-  --map-color: rgba(0, 0, 0, 0.521);
-  --map-controller-bg-color: var(--map-color);
-  --map-controller-color: var(--remote-color);
   --tri-color: #4068eb;
   --tri2-color: #40eb87;
-  --sonar-color: #40da80;
-  --sonar-color-transparent: #40da9a75;
-  --remote-color: #40d5da;
-  --remote-background-color: var(--map-color);
-  --sonar-background-color: var(--map-color);
-  --font-color: rgb(247, 247, 247);
+
+
+  --highlight: #51C1CE;
+  --highlight-transparent: rgba(64, 218, 154, 0.411);
+  --highlight-2: #64E0C1;
+  --font-color: rgb(17, 17, 17);
+  --component-background: rgba(255, 255, 255, 0.521);
 }
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.692), rgba(0, 0, 0, 0.349)),
-    url("https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1466&q=80");
+  // background: linear-gradient(rgba(0, 0, 0, 0.692), rgba(0, 0, 0, 0.349)),
+  //  url("https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1466&q=80");
+  background: white;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

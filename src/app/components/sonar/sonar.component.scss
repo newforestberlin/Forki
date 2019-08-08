@@ -1,10 +1,10 @@
 .sonar {
   width: 600px;
   height: 600px;
-  border: var(--sonar-color) 2px solid;
+  border: var(--highlight) 2px solid;
   border-radius: 50%;
   position: relative;
-  background: var(--sonar-background-color);
+  background: var(--component-background);
   overflow: hidden;
 }
 
@@ -17,7 +17,7 @@
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 50%;
-  background: var(--sonar-color);
+  background: var(--highlight);
 }
 
 .dist-indicator-1 {
@@ -29,7 +29,7 @@
   margin-top: -100px;
   margin-left: -100px;
   border-radius: 50%;
-  border: var(--sonar-color) 2px solid;
+  border: var(--highlight) 2px solid;
 }
 
 .dist-indicator-2 {
@@ -41,7 +41,7 @@
   margin-top: -200px;
   margin-left: -200px;
   border-radius: 50%;
-  border: var(--sonar-color) 2px solid;
+  border: var(--highlight) 2px solid;
 }
 
 .pulse {
@@ -55,7 +55,7 @@
   border-radius: 50%;
   animation: 2s pulse infinite;
   transition: all 2s ease-in-out;
-  border: var(--sonar-color) 2px solid;
+  border: var(--highlight) 2px solid;
 }
 
 @keyframes pulse {
@@ -72,7 +72,7 @@
     height: 600px;
     margin-top: -300px;
     margin-left: -300px;
-    background: var(--sonar-color-transparent);
+    background: var(--highlight-transparent);
   }
 
   100% {
@@ -93,10 +93,10 @@
   height: 300px;
   margin-left: -300px;
   margin-top: -300px;
-  border-right: solid 1px var(--sonar-color-transparent);
+  border-right: solid 1px var(--highlight-transparent);
   border-radius: 100% 0 0 0;
   transform-origin: 100% 100%;
-  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--sonar-color));
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--highlight));
   transition: all 0.2s linear;
   // animation: sweep 5s infinite linear;
 }
@@ -109,10 +109,10 @@
   height: 300px;
   margin-left: -300px;
   margin-top: -300px;
-  border-right: solid 1px var(--sonar-color-transparent);
+  border-right: solid 1px var(--highlight-transparent);
   border-radius: 100% 0 0 0;
   transform-origin: 100% 100%;
-  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--sonar-color-transparent));
+  background: linear-gradient(50deg, rgba(34, 34, 34, 0) 56%, var(--highlight-transparent));
   transition: all 0.2s linear;
   transform: rotate(180deg);
   // animation: sweep 5s infinite linear;
