@@ -21,3 +21,13 @@ h2>a:hover {
 h1>span {
   color: var(--highlight)
 }
+
+#sidebar-button {
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#sidebar-button:hover {
+  transform: scale(1.1)
+}
