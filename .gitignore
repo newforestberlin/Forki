@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+.DS_Store
 
 # dependencies
 /node_modules
