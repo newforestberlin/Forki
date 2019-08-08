@@ -1,6 +1,6 @@
 :root {
-  --mapWidth: 1980px;
-  --mapHeight: 1020px;
+  --mapWidth: 100%;
+  --mapHeight: 400px;
 }
 
 #map {
@@ -29,7 +29,7 @@ input {
 
 .taget,
 #target {
-  background-image: url("../../../assets/images/flag.svg");
+  background-image: url("../../../assets/images/target.png");
   background-position: cover;
   background-size: 100% 100%;
   top: 10px;
@@ -39,7 +39,7 @@ input {
   position: absolute;
   z-index: 99;
   cursor: pointer;
-  -webkit-filter: invert(100%);
+  //-webkit-filter: invert(100%);
 }
 
 .robot {
@@ -49,6 +49,8 @@ input {
   height: 70px;
   width: 70px;
   position: absolute;
+  cursor: pointer;
+  z-index: 99;
 }
 
 .anchor {
@@ -107,13 +109,13 @@ input {
   }
 }
 
-
 .obstacle {
   border-radius: 5px;
   position: absolute;
   top: 5px;
   left: 5px;
-  border: solid var(--highlight) 3px;
+  border: solid var(--highlight-2) 3px;
   cursor: pointer;
+  background: white;
   z-index: 99;
 }

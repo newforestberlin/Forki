@@ -6,12 +6,13 @@ import * as $ from 'jquery';
 })
 export class DomManipulatorService {
   obstacleNumber = 0;
-  width = 1980;
-  height = 1280;
+  width;
+  height;
   scaleX = 1;
   scaleY = 1;
   sweepRotation = 0;
-  constructor() { }
+  constructor() {
+  }
 
 
   setMapSize(width, height) {
@@ -67,12 +68,12 @@ export class DomManipulatorService {
           y: event.clientY
 
         };
-        if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {
-          div.style.left = (mousePosition.x + offset[0]) + 'px';
-        }
-        if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {
-          div.style.top = (mousePosition.y + offset[1]) + 'px';
-        }
+        /* if (mousePosition.x > 188 && mousePosition.x < 188 + this.width) {*/
+        div.style.left = (mousePosition.x + offset[0]) + 'px';
+        /* }
+          if (mousePosition.y > 90 && mousePosition.y < 90 + this.height) {*/
+        div.style.top = (mousePosition.y + offset[1]) + 'px';
+        /*  }*/
       }
     }, true);
   }

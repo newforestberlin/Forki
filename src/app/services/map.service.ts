@@ -12,14 +12,14 @@ export class PathfinderService {
   elementSize = 5;
   clearance = 10;
 
-  constructor(private http: HttpClient, private socketService: SocketService, private domService: DomManipulatorService
+  constructor(private socketService: SocketService, private domService: DomManipulatorService
   ) { }
 
   async findPath() {
     await this.setTargetPosition();
     await this.setRobotPosition();
     await this.setObstacleParameters();
-    const data = { id: 1, width: this.domService.width, height: this.domService.height, elementSize: this.elementSize, clearance: this.clearance }
+    const data = { id: 1, width: $("#map").width(), height: $("#map").height(), elementSize: this.elementSize, clearance: this.clearance }
     this.socketService.send("getPath", data);
   }
 
@@ -36,9 +36,16 @@ export class PathfinderService {
 
   setRobotPosition() {
     return new Promise(async (resolve) => {
-      const coordinate = $(".tri").position();
-      const width = $(".tri").width();
-      const height = $(".tri").height();
+
+      let coordinate = $(".tri").position();
+      let width = $(".tri").width();
+      let height = $(".tri").height();
+      if (!coordinate) {
+        coordinate = $("#robot").position();
+        width = $("#robot").width();
+        height = $("#robot").height();
+      }
+
       const data = { id: 1, x: Math.round((coordinate.left + width / 2) / this.elementSize), y: Math.round((coordinate.top + height / 2) / this.elementSize) };
       await this.socketService.send("robotupdate", data);
       resolve(data);
