@@ -33,6 +33,8 @@ git clone https://github.com/newforestberlin/Forki.git scripts
 cd ./scripts 
 git checkout pi_scripts
 ```
+### Software architecture
+![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png)
 
 ### Start scripts and Node.js on the Raspberry Pi
 `./run.sh`
