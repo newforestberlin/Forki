@@ -29,5 +29,5 @@ export class RemoteControllerComponent implements OnInit {
 
   setDirection(direction) {
     this.socketService.send("setMovement", { direction, time: 0.1 });
-  } y
+  }
 }
