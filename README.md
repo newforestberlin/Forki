@@ -54,3 +54,20 @@ cd ./backend
 npm install
 npm start
 ```
+
+# Setup Raspberry Pi backend and IoT-Platform and Landingpage in one directory
+```
+git clone https://github.com/newforestberlin/Forki.git forki
+cd ./forki
+git submodule update --init --recursive
+npm install
+npm start
+
+cd ./backend
+npm install
+npm start
+
+cd ../raspberry_pi/backend
+npm install
+npm start
+```
