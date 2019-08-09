@@ -26,20 +26,3 @@ exports.directionValidator = (command) => {
     }
   });
 }
-
-exports.forkMovementListener = (req, res, next) => {
-  const forkState = "down";
-  const stepMotorRotation = 90; // deg
-  const command = req.params.command;
-  if (forkState != command) {
-    if (command === "up") {
-      // Rotate StepMotor to the right
-      this.moveFork(stepMotorRotation);
-      forkState = command;
-    } else if (command === "down") {
-      // Rotate StepMotor to the left
-      this.moveFork(-stepMotorRotation);
-      forkState = command;
-    }
-  }
-}
