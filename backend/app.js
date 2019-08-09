@@ -16,18 +16,18 @@ const socket = io.connect(process.env.RASPBERRY_BACKEND_URL, {
 mongoose.connect(process.env.MONGO_DB);
 
 ioListener.on('connection', (socket) => {
-  console.log('user connected');
+  console.log('Frontend connected');
   socketLocalization.sockets(socket, ioListener);
   socketRouting.sockets(socket, ioListener);
   socketSonar.sockets(socket, ioListener);
   socketMovement.sockets(socket, io);
-  socket.on('disconnect', () => {
+  socket.on('Frontend', () => {
     console.log('user disconnected');
   });
 });
 
 socket.on('connect', () => {
-  console.log('Connected');
+  console.log('Connected to Raspberry Pi');
   socketMovement.sockets(socket);
 });
 

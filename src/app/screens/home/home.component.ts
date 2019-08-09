@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SocketListenerService } from '../../services/socket-listener.service';
 
 @Component({
@@ -6,12 +6,7 @@ import { SocketListenerService } from '../../services/socket-listener.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor( private socketListenerService: SocketListenerService) { }
-
-  ngOnInit() {
-    this.socketListenerService.initIoConnection();
-  }
-
+  constructor(private socketListenerService: SocketListenerService) { }
 }
