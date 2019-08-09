@@ -137,7 +137,7 @@ export class DomManipulatorService {
         div.className = className;
         this.reduceElementStack(className);
         const map = document.getElementById("map");
-        map.appendChild(div);
+        if (map) { map.appendChild(div); }
       }
     }
   }
