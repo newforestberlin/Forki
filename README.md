@@ -34,7 +34,7 @@ cd ./scripts
 git checkout pi_scripts
 ```
 ### Software architecture
-![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png)
+![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png?token=AKFFFIWQEGF3FIDDUI45W5K5K2O7W)
 
 ### Start scripts and Node.js on the Raspberry Pi
 `./run.sh`
