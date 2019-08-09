@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SocketService } from './services/socket.service';
+import { SocketListenerService } from './services/socket-listener.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forki-routing';
+  constructor(private socketService: SocketService, private socketListener: SocketListenerService) { }
+
+  ngOnInit() {
+    this.socketListener.initIoConnection();
+  }
 }

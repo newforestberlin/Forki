@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 import * as io from "socket.io-client";
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +11,7 @@ export class SocketService {
     private subject: Subject<MessageEvent>;
     private socket;
 
-    constructor(private http: HttpClient
-    ) { }
+    constructor() { }
 
     public initSocket(): void {
         this.socket = io(environment.ws_url);

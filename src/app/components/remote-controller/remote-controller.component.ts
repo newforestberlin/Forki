@@ -12,7 +12,6 @@ export class RemoteControllerComponent implements OnInit {
   constructor(private socketService: SocketService) { }
 
   ngOnInit() {
-    this.socketService.initSocket();
   }
 
   public start() {
