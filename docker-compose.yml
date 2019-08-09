@@ -1,11 +1,11 @@
 version: "3"
 services:
   frontend:
-    build: .
+    build: ./frontend/
     ports:
       - "4200:4200"
     volumes:
-      - .:/src
+      - ./frontend:/src
     restart: always
     command: npm start
     depends_on:
