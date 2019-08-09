@@ -3,6 +3,8 @@
   --mapHeight: 400px;
 }
 
+
+
 #map {
   width: var(--mapWidth);
   height: var(--mapHeight);
@@ -15,8 +17,26 @@
   border-radius: 5px;
 }
 
-input {
-  margin-left: -45px;
+.map-controller {
+  background: var(--component-background);
+  border: solid 2px var(--highlight-2);
+  border-top: 0px;
+  border-radius: 5px;
+  padding: 15px;
+  max-width: 500px;
+}
+
+.form-control {
+  width: 80px;
+  margin-left: 20px;
+}
+
+button.btn {
+  background: var(--highlight-2);
+}
+
+h4 {
+  width: 200px;
 }
 
 .path {

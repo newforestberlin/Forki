@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './screens/home/home.component';
-import { MovementComponent } from './components/movement/movement.component';
+import { RemoteControllerComponent } from './components/remote-controller/remote-controller.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MapComponent } from './components/map/map.component';
 import { SonarComponent } from './components/sonar/sonar.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
     component: MapComponent,
   }, {
     path: 'controller',
-    component: MovementComponent,
+    component: RemoteControllerComponent,
   }, {
     path: 'sonar',
     component: SonarComponent,

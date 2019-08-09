@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 })
 export class DomManipulatorService {
   obstacleNumber = 0;
+  elementSize = 5;
   width;
   height;
   scaleX = 1;
