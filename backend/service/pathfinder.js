@@ -52,7 +52,7 @@ function setUnwalkables(unwalkables, width, height, elementSize) {
 }
 
 async function findPath(robotPosition, targetPosition, grid) {
-  finder = new PF.BiDijkstraFinder({
+  finder = new PF.AStarFinder({
     allowDiagonal: true,
     dontCrossCorners: true
   });
