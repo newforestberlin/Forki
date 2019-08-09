@@ -12,9 +12,7 @@ export class DomManipulatorService {
   scaleX = 1;
   scaleY = 1;
   sweepRotation = 0;
-  constructor() {
-  }
-
+  constructor() { }
 
   setMapSize(width, height) {
     this.width = width;
