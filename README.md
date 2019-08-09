@@ -1,5 +1,5 @@
 # Software architecture
-![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png?token=AKFFFIWQEGF3FIDDUI45W5K5K2O7W)
+![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png?token=AKFFFIWQPUMHQNCXIZ2YG225K2PZS)
 
 # Setup remote connection to the Raspberry Pi with vscode
 ### Install rmate with this guide
