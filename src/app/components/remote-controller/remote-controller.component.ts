@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
 
 @Component({
-  selector: 'app-movement',
-  templateUrl: './movement.component.html',
-  styleUrls: ['./movement.component.scss']
+  selector: 'app-remote-controller',
+  templateUrl: './remote-controller.component.html',
+  styleUrls: ['./remote-controller.component.scss']
 })
-export class MovementComponent implements OnInit {
+export class RemoteControllerComponent implements OnInit {
 
   send: any;
   constructor(private socketService: SocketService) { }
@@ -29,7 +29,6 @@ export class MovementComponent implements OnInit {
   }
 
   setDirection(direction) {
-    console.log(direction)
-    this.socketService.send("setMovement", { direction: direction, time: 0.1 });
-  }
+    this.socketService.send("setMovement", { direction, time: 0.1 });
+  } y
 }
