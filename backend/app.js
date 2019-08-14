@@ -15,7 +15,7 @@ const socket = io.connect(process.env.RASPBERRY_BACKEND_URL, {
 
 try {
   mongoose.connect(process.env.MONGO_DB);
-} catch {
+} catch (err) {
   console.log("No connection to database :(")
 }
 
