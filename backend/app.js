@@ -31,6 +31,6 @@ socket.on('connect', () => {
   socketMovement.sockets(socket);
 });
 
-http.listen(3000, () => {
-  console.log("started on port 3000");
+http.listen(process.env.PORT, () => {
+  console.log("started on port " + process.env.PORT);
 });
