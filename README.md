@@ -30,6 +30,8 @@ git checkout pi_backend
 npm install
 ```
 
+You need to edit the .env.example, rename it to .env and place the IP of your local machine in the IOT_PLATFORM_URL variable
+
 ### Set up sensor scripts on the Raspberry pi
 ```
 git clone https://github.com/newforestberlin/Forki.git scripts 
@@ -40,12 +42,18 @@ git checkout pi_scripts
 `./run.sh`
 
 # Setup IoT-Platform with [Docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
+
+You need to edit the ./backend/.env.example, rename it to .env and place the IP of your local machine in the RASPBERRY_PI_URL variable
+
 ```
 git clone https://github.com/newforestberlin/Forki.git forki-platform
 docker-compose up
 ```
 
 # Setup IoT-Platform on local machine
+
+You need to edit the ./backend/.env.example, rename it to .env and place the IP of your local machine in the RASPBERRY_PI_URL variable
+
 ```
 git clone https://github.com/newforestberlin/Forki.git forki-platform 
 cd ./forki-platform/frontend
@@ -58,19 +66,19 @@ npm start
 ```
 
 # Setup Raspberry Pi backend, IoT-Platform and Landingpage in one directory
+
+You need to edit the ./backend/.env.example and ./raspberry_pi/backend/.env.example, rename it to .env
+
 ```
 git clone https://github.com/newforestberlin/Forki.git forki
 cd ./forki
 git submodule update --init --recursive
-cd ./frontend
-npm install
-npm start
 
-cd ../backend
-npm install
-npm start
+npm install --prefix ./backend/
+npm install --prefix ./raspberry_pi/backend/
+npm install --prefix ./frontend/
 
-cd ../raspberry_pi/backend
-npm install
-npm start
+npm start --prefix ./raspberry_pi/backend/ &
+npm start --prefix ./backend/ &
+npm start --prefix ./frontend/ &
 ```
