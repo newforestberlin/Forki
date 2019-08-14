@@ -13,11 +13,12 @@ const socket = io.connect(process.env.RASPBERRY_BACKEND_URL, {
   reconnection: true
 });
 
-try {
-  mongoose.connect(process.env.MONGO_DB);
-} catch (err) {
-  console.log("No connection to database :(")
-}
+mongoose.connect(process.env.MONGO_DB).then(() => {
+    console.log('Connection to database!')
+  })
+  .catch(() => {
+    console.log('Connection to database failed!');
+  });
 
 ioListener.on('connection', (socket) => {
   console.log('Frontend connected');
