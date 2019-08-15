@@ -3,30 +3,36 @@
   <div class="row">
     <div class="col-6">
       <div class="controller-row">
-        <button class="btn" (mousedown)='mouseDown("forwards")' (mouseup)="mouseUp()">
+        <button class="btn" (touchstart)='mouseDown("forwards")' (touchend)='mouseUp()'
+          (mousedown)='mouseDown("forwards")' (mouseup)="mouseUp()">
           <i class="fas text-light fa-arrow-up"></i>
         </button>
       </div>
       <div class="controller-row">
-        <button class="btn mr-5" (mousedown)='mouseDown("left")' (mouseup)="mouseUp()">
+        <button class="btn mr-5" (touchstart)='mouseDown("left")' (touchend)='mouseUp()' (mousedown)='mouseDown("left")'
+          (mouseup)="mouseUp()">
           <i class="fas text-light fa-arrow-left"></i>
         </button>
-        <button class="btn" (mousedown)='mouseDown("right")' (mouseup)="mouseUp()">
+        <button class="btn" (touchstart)='mouseDown("right")' (touchend)='mouseUp()' (mousedown)='mouseDown("right")'
+          (mouseup)="mouseUp()">
           <i class="fas text-light fa-arrow-right"></i>
         </button>
       </div>
       <div class="controller-row">
-        <button class="btn" (mousedown)='mouseDown("backwards")' (mouseup)="mouseUp()">
+        <button class="btn" (touchstart)='mouseDown("backwards")' (touchend)='mouseUp()'
+          (mousedown)='mouseDown("backwards")' (mouseup)="mouseUp()">
           <i class="fas text-light fa-arrow-down"></i>
         </button>
       </div>
     </div>
     <div class="col-6">
       <div class="controller">
-        <button class="btn mr-2" (mousedown)='mouseDown("turn left")' (mouseup)="mouseUp()">
+        <button class="btn mr-2" (touchstart)='mouseDown("turn left")' (touchend)='mouseUp()'
+          (mousedown)='mouseDown("turn left")' (mouseup)="mouseUp()">
           <i class="fas text-light fa-undo"></i>
         </button>
-        <button class="btn" (mousedown)='mouseDown("turn right")' (mouseup)="mouseUp()">
+        <button class="btn" (touchstart)='mouseDown("turn right")' (touchend)='mouseUp()'
+          (mousedown)='mouseDown("turn right")' (mouseup)="mouseUp()">
           <i class="fas text-light fa-redo"></i>
         </button>
       </div>
