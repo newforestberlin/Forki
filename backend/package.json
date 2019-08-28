@@ -8,10 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mjhea0/passport-local-express4.git"
+    "url": "git@github.com:newforestberlin/Forki.git"
   },
-  "author": "Michael Herman <michael@mherman.org>",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.10.2",
     "chai": "~1.8.1",
@@ -37,5 +35,7 @@
     "should": "~2.1.0",
     "socket.io": "^2.2.0",
     "stringify": "^5.2.0"
-  }
+  },
+  "author": "Patrick Hallek, Newforest UG (haftungsbeschränkt)",
+  "license": "MIT"
 }

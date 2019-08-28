@@ -17,6 +17,6 @@
     "socket.io-client": "^2.2.0"
   },
   "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  "author": "Patrick Hallek, Newforest UG (haftungsbeschränkt)",
+  "license": "MIT"
 }
