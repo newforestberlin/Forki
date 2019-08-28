@@ -29,7 +29,8 @@ You need to edit the .env.example, rename it to .env and place the IP of your lo
 ./run.sh
 ```
 
-# Setup Frontend and Backend (IoT Platform) on your local machine with [Docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac) (recommended)
+# Setup Frontend and Backend (IoT Platform) on your local machine
+## Option 1: Set up with [Docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac) (recommended)
 
 ```
 git clone https://github.com/newforestberlin/Forki.git
@@ -41,7 +42,7 @@ You need to edit the ./backend/.env.example, rename it to .env and place the IP 
 docker-compose up
 ```
 
-# Setup frontend and backend (IoT Platform) on your local machine directly
+## Option 2: Install everything directly on your local machine
 
 ```
 git clone https://github.com/newforestberlin/Forki.git
