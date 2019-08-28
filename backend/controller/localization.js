@@ -31,9 +31,9 @@ exports.setAnchorPosition = (data) => {
 
 exports.getRobotPositionRealtime = async () => {
   return new Promise(async (resolve) => {
-    const AN0 = await database.getAnchorParameters(process.env.AN0);
-    const AN1 = await database.getAnchorParameters(process.env.AN1);
-    const AN2 = await database.getAnchorParameters(process.env.AN2);
+    const AN0 = await database.getAnchorParameters("AN0");
+    const AN1 = await database.getAnchorParameters("AN1");
+    const AN2 = await database.getAnchorParameters("AN2");
     if (AN0 && AN1 && AN2) {
       resolve(await trilateration.getRobotPositionRealtime(AN0, AN1, AN2));
     } else resolve();

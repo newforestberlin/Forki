@@ -5,9 +5,6 @@
 export const environment = {
   production: false,
   ws_url: "http://localhost:3001/",
-  AN0: "5C2F",
-  AN1: "0F8C",
-  AN2: "8182"
 };
 
 /*

@@ -86,8 +86,8 @@ export class MapComponent implements OnInit {
   }
 
   async setAnchorPosition(x0: number, x1: number, x2: number, y0: number, y1: number, y2: number) {
-    await this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x0, y: y0 });
-    await this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x1, y: y1 });
-    this.socketService.send("anchorPositionUpdate", { id: environment.AN0, x: x2, y: y2 });
+    await this.socketService.send("anchorPositionUpdate", { id: "AN0", x: x0, y: y0 });
+    await this.socketService.send("anchorPositionUpdate", { id: "AN1", x: x1, y: y1 });
+    this.socketService.send("anchorPositionUpdate", { id: "AN2", x: x2, y: y2 });
   }
 }
