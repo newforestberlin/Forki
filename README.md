@@ -17,7 +17,7 @@ If you are interested in the localization module: [Precise indoor localization](
 
 ## Option 1: Use our Raspberry Pi image
 The advantage is that you don't have to install anything anymore and the software starts automatically when you boot the Raspberry Pi.
-Just clone the git repository and checkout to the image branch.
+(comming soon)
 
 ## Option 2: Install everything by your own
 
