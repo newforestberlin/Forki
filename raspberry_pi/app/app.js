@@ -1,23 +1,24 @@
-/* var socket = io.connect('http://192.168.188.22:3000', {
-  reconnection: true
-}); */
+const movement = require('./routes/movement')
+const movementService = require('./services/movement')
+const database = require('./services/database')
 const app = require('express')();
 const http = require('http').Server(app);
 const ioListener = require('socket.io')(http);
 const redis = require('redis');
 const client = redis.createClient();
 const io = require('socket.io-client');
+
 require('dotenv').config();
+
 const socket = io.connect(process.env.IOT_PLATFORM_URL, {
   reconnection: true
 });
-const movement = require('./routes/movement')
-const movementService = require('./services/movement')
-const database = require('./services/database')
+
 // conect to redis database
 client.on('connect', async function () {
   console.log('Redis client connected');
 });
+
 client.on('error', function (err) {
   console.log('Something went wrong ' + err);
 });

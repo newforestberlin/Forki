@@ -5,6 +5,8 @@ import json
 import redis
 import numpy as np
 
+##############################################################
+
 r = redis.Redis(host='localhost', port=6379, db=0)
 gpio.cleanup()
 gpio.setmode(gpio.BOARD)
@@ -37,6 +39,8 @@ gpio_echo_right = 15
 gpio.setup(gpio_trigger_right, gpio.OUT)
 gpio.setup(gpio_echo_right, gpio.IN)
 
+##############################################################
+
 
 def distance(gpio_trigger, gpio_echo):
     gpio.output(gpio_trigger, True)
@@ -61,6 +65,8 @@ def distance(gpio_trigger, gpio_echo):
     pulse_duration = pulse_end_time - pulse_start_time
     return round(pulse_duration * 17150, 2)
 
+##############################################################
+
 
 try:
     while True:
@@ -81,5 +87,5 @@ try:
         time.sleep(0.1)
 
 except KeyboardInterrupt:
-    print("Messung vom User gestoppt")
+    print("Stop")
     gpio.cleanup()

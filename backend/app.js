@@ -8,7 +8,9 @@ const socketSonar = require('./routes/sonar');
 const socketMovement = require('./routes/movement');
 const socketLocalization = require('./routes/localization');
 const io = require('socket.io-client')
+
 require('dotenv').config()
+
 const socket = io.connect(process.env.RASPBERRY_BACKEND_URL, {
   reconnection: true
 });

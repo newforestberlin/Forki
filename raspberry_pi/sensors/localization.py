@@ -4,15 +4,22 @@ import datetime
 import json
 import redis
 
+##############################################################
+
 r = redis.Redis(host='localhost', port=6379, db=0)
 DWM = serial.Serial(port="/dev/ttyACM0", baudrate=115200)
 print("Connected to " + DWM.name)
+
 DWM.write("\r\r".encode())
 print("Encode")
 time.sleep(1)
+
 DWM.write("lec\r".encode())
 print("Encode")
 time.sleep(1)
+
+##############################################################
+
 try:
     while True:
         data = DWM.readline()
@@ -38,4 +45,4 @@ try:
     DWM.close()
 
 except KeyboardInterrupt:
-    print("Messung vom User gestoppt")
+    print("Stop")
