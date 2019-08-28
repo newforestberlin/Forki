@@ -1,4 +1,4 @@
-![Forki](https://raw.githubusercontent.com/newforestberlin/Forki/develope/forki.jpeg)
+![Forki](https://raw.githubusercontent.com/newforestberlin/Forki/master/forki.jpeg)
 
 The goal of forki is to advance the development of software for real industrial robots. That’s why we document and opensource the entire project to give others the opportunity to rebuild forki and become a part of the robotics community themselves and share knowledge.
 
@@ -8,7 +8,7 @@ If you are interested in the localization module: [Precise indoor localization](
 
 
 # Software architecture
-![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png)
+![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/master/architecture.png)
 
 # Setup Raspberry Pi
 
