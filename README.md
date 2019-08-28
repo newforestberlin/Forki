@@ -1,3 +1,4 @@
+# Forki - The omnidirectional autonomous driving robot
 ![Forki](https://raw.githubusercontent.com/newforestberlin/Forki/master/forki.jpeg)
 
 The goal of forki is to advance the development of software for real industrial robots. That’s why we document and opensource the entire project to give others the opportunity to rebuild forki and become a part of the robotics community themselves and share knowledge.
