@@ -1,6 +1,14 @@
+![Forki](https://raw.githubusercontent.com/newforestberlin/Forki/develope/forki.jpeg)
+
+The goal of forki is to advance the development of software for real industrial robots. That’s why we document and opensource the entire project to give others the opportunity to rebuild forki and become a part of the robotics community themselves and share knowledge.
+
+More about the story behind forki: [http://www.intrabotics.de/](http://www.intrabotics.de/)
+How to build Fokri: [Froki Part I](https://medium.com/@newforestberlin/omnidirectional-selfdriving-robot-with-a-raspberry-pi-and-mecanum-wheels-c47bc80c6780)
+If you are interested in the localization module: [Precise indoor localization](https://medium.com/@newforestberlin/precise-realtime-indoor-localization-with-raspberry-pi-and-ultra-wideband-technology-decawave-191e4e2daa8c)
+
+
 # Software architecture
 ![architecture](https://raw.githubusercontent.com/newforestberlin/Forki/develope/architecture.png)
-
 
 # Setup Raspberry Pi
 
