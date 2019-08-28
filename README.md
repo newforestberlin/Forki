@@ -41,7 +41,7 @@ You need to edit the ./backend/.env.example, rename it to .env and place the IP 
 docker-compose up
 ```
 
-# Setup Frontend and Backend (IoT Platform) on your local machine directly
+# Setup frontend and backend (IoT Platform) on your local machine directly
 
 ```
 git clone https://github.com/newforestberlin/Forki.git
