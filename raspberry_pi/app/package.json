@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "raspi": "^6.0.1",
     "raspi-pwm": "^6.0.0",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "rpi-gpio": "^2.1.3",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0"
