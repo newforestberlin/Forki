@@ -21,7 +21,7 @@
     "express-session": "^1.10.1",
     "jade": "^1.9.1",
     "mocha": "~1.14.0",
-    "mongoose": "^4.10.8",
+    "mongoose": "^4.13.21",
     "morgan": "^1.9.1",
     "node-dijkstra": "^2.5.0",
     "node-trilateration": "^1.0.0",
