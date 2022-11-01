@@ -20,7 +20,7 @@
     "express": "^4.11.1",
     "express-session": "^1.10.1",
     "jade": "^1.9.1",
-    "mocha": "~1.14.0",
+    "mocha": "~10.1.0",
     "mongoose": "^4.10.8",
     "morgan": "^1.9.1",
     "node-dijkstra": "^2.5.0",
