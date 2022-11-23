@@ -33,7 +33,7 @@
     "rpi-gpio": "^2.1.3",
     "serve-favicon": "^2.2.0",
     "should": "~2.1.0",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.5.0",
     "stringify": "^5.2.0"
   },
   "author": "Patrick Hallek, Newforest UG (haftungsbeschränkt)",
